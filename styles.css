@@ -549,3 +549,158 @@ button{cursor:pointer}
 /* === EMMYTECH LARGE CAMPAIGN HERO END === */
 
 
+/* === EMMYTECH HERO ASSURANCE CARDS FIX START === */
+
+.campaign-hero__assurance{
+    position:absolute !important;
+    left:52px !important;
+    bottom:34px !important;
+    width:min(820px,62vw) !important;
+    display:grid !important;
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:16px !important;
+    border-top:0 !important;
+    overflow:visible !important;
+    z-index:5 !important;
+}
+
+.campaign-hero__assurance > div,
+.campaign-hero__assurance div + div,
+.campaign-hero__assurance div:last-child{
+    position:relative !important;
+    min-height:138px !important;
+    padding:22px 20px 18px !important;
+    border-right:0 !important;
+    border-bottom:0 !important;
+    border-radius:22px !important;
+    background:rgba(10, 36, 122, 0.92) !important;
+    border:1px solid rgba(255,255,255,0.14) !important;
+    box-shadow:0 16px 34px rgba(4, 16, 60, 0.22) !important;
+    backdrop-filter:blur(10px) !important;
+}
+
+.campaign-hero__assurance > div small{
+    display:block !important;
+    margin-bottom:12px !important;
+    color:#ffb100 !important;
+    font-size:.72rem !important;
+    line-height:1 !important;
+    font-weight:800 !important;
+    letter-spacing:.04em !important;
+}
+
+.campaign-hero__assurance > div strong{
+    display:block !important;
+    margin-bottom:8px !important;
+    color:#ffffff !important;
+    font-size:1.02rem !important;
+    line-height:1.18 !important;
+    font-weight:800 !important;
+    letter-spacing:-0.02em !important;
+}
+
+.campaign-hero__assurance > div span{
+    display:block !important;
+    color:rgba(255,255,255,0.82) !important;
+    font-size:.92rem !important;
+    line-height:1.42 !important;
+}
+
+/* Highlight the surprise gift card */
+.campaign-hero__assurance > div:nth-child(3){
+    background:linear-gradient(180deg, #fff9ec 0%, #fff0cc 100%) !important;
+    border:1.5px solid #ffb100 !important;
+    box-shadow:0 18px 40px rgba(255, 177, 0, 0.16) !important;
+    transform:translateY(-6px) !important;
+}
+
+.campaign-hero__assurance > div:nth-child(3)::before{
+    content:"FIRST 30 ONLY";
+    position:absolute;
+    top:14px;
+    right:14px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:28px;
+    padding:0 12px;
+    border-radius:999px;
+    background:#ffb100;
+    color:#111111;
+    font-size:.63rem;
+    font-weight:800;
+    letter-spacing:.04em;
+    white-space:nowrap;
+}
+
+.campaign-hero__assurance > div:nth-child(3) small{
+    color:#d88900 !important;
+}
+
+.campaign-hero__assurance > div:nth-child(3) strong{
+    color:#111111 !important;
+    padding-right:92px !important;
+}
+
+.campaign-hero__assurance > div:nth-child(3) span{
+    color:rgba(17,17,17,0.78) !important;
+}
+
+@media(max-width:1050px){
+    .campaign-hero__assurance{
+        width:min(720px,68vw) !important;
+        left:34px !important;
+        bottom:24px !important;
+        gap:12px !important;
+    }
+
+    .campaign-hero__assurance > div,
+    .campaign-hero__assurance div + div,
+    .campaign-hero__assurance div:last-child{
+        min-height:128px !important;
+        padding:18px 16px 16px !important;
+    }
+
+    .campaign-hero__assurance > div strong{
+        font-size:.92rem !important;
+    }
+
+    .campaign-hero__assurance > div span{
+        font-size:.84rem !important;
+    }
+}
+
+@media(max-width:760px){
+    .campaign-hero__assurance{
+        position:relative !important;
+        left:auto !important;
+        bottom:auto !important;
+        width:100% !important;
+        margin-top:28px !important;
+        grid-template-columns:1fr !important;
+        gap:12px !important;
+    }
+
+    .campaign-hero__assurance > div,
+    .campaign-hero__assurance div + div,
+    .campaign-hero__assurance div:last-child{
+        min-height:auto !important;
+        padding:18px 16px !important;
+        transform:none !important;
+    }
+
+    .campaign-hero__assurance > div:nth-child(3) strong{
+        padding-right:0 !important;
+        padding-top:10px !important;
+    }
+
+    .campaign-hero__assurance > div:nth-child(3)::before{
+        position:static;
+        margin-bottom:10px;
+        width:max-content;
+    }
+}
+
+/* === EMMYTECH HERO ASSURANCE CARDS FIX END === */
+
+
