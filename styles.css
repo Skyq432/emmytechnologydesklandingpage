@@ -553,140 +553,191 @@ button{cursor:pointer}
 
 .campaign-hero__assurance{
     position:absolute !important;
-    left:52px !important;
-    bottom:34px !important;
-    width:min(820px,62vw) !important;
+    left:clamp(28px, 4vw, 56px) !important;
+    right:clamp(28px, 4vw, 56px) !important;
+    bottom:clamp(24px, 3vw, 38px) !important;
+    width:auto !important;
     display:grid !important;
-    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
-    gap:16px !important;
-    border-top:0 !important;
+    grid-template-columns:1fr 1fr 1.08fr !important;
+    gap:20px !important;
+    align-items:stretch !important;
+    z-index:8 !important;
+    border:0 !important;
     overflow:visible !important;
-    z-index:5 !important;
 }
 
 .campaign-hero__assurance > div,
 .campaign-hero__assurance div + div,
 .campaign-hero__assurance div:last-child{
     position:relative !important;
-    min-height:138px !important;
-    padding:22px 20px 18px !important;
-    border-right:0 !important;
-    border-bottom:0 !important;
-    border-radius:22px !important;
-    background:rgba(10, 36, 122, 0.92) !important;
+    min-height:168px !important;
+    padding:24px 24px 22px !important;
+    border-radius:26px !important;
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
     border:1px solid rgba(255,255,255,0.14) !important;
-    box-shadow:0 16px 34px rgba(4, 16, 60, 0.22) !important;
-    backdrop-filter:blur(10px) !important;
+    background:rgba(9, 41, 152, 0.94) !important;
+    box-shadow:0 16px 34px rgba(4, 16, 60, 0.20) !important;
+    backdrop-filter:blur(8px) !important;
 }
 
 .campaign-hero__assurance > div small{
     display:block !important;
-    margin-bottom:12px !important;
+    margin-bottom:14px !important;
     color:#ffb100 !important;
-    font-size:.72rem !important;
-    line-height:1 !important;
+    font-size:.78rem !important;
     font-weight:800 !important;
+    line-height:1 !important;
     letter-spacing:.04em !important;
 }
 
 .campaign-hero__assurance > div strong{
     display:block !important;
-    margin-bottom:8px !important;
+    margin-bottom:10px !important;
     color:#ffffff !important;
-    font-size:1.02rem !important;
-    line-height:1.18 !important;
-    font-weight:800 !important;
-    letter-spacing:-0.02em !important;
+    font-size:clamp(1.2rem, 1.25vw, 1.55rem) !important;
+    line-height:1.12 !important;
+    font-weight:900 !important;
+    letter-spacing:-0.03em !important;
 }
 
 .campaign-hero__assurance > div span{
     display:block !important;
-    color:rgba(255,255,255,0.82) !important;
-    font-size:.92rem !important;
-    line-height:1.42 !important;
+    color:rgba(255,255,255,0.84) !important;
+    font-size:1rem !important;
+    line-height:1.45 !important;
+    max-width:22ch !important;
 }
 
-/* Highlight the surprise gift card */
+/* tasteful emoji accents */
+.campaign-hero__assurance > div:nth-child(1) strong::before{
+    content:"🚚 ";
+}
+
+.campaign-hero__assurance > div:nth-child(2) strong::before{
+    content:"↩️ ";
+}
+
+.campaign-hero__assurance > div:nth-child(3) strong::before{
+    content:"🎁 ";
+}
+
+/* standout surprise gift card */
 .campaign-hero__assurance > div:nth-child(3){
-    background:linear-gradient(180deg, #fff9ec 0%, #fff0cc 100%) !important;
-    border:1.5px solid #ffb100 !important;
-    box-shadow:0 18px 40px rgba(255, 177, 0, 0.16) !important;
-    transform:translateY(-6px) !important;
+    background:linear-gradient(180deg, #fff8e8 0%, #fff0c9 100%) !important;
+    border:2px solid #ffb100 !important;
+    box-shadow:0 20px 42px rgba(255, 177, 0, 0.16) !important;
+    transform:translateY(-8px) !important;
 }
 
 .campaign-hero__assurance > div:nth-child(3)::before{
     content:"FIRST 30 ONLY";
     position:absolute;
-    top:14px;
-    right:14px;
+    top:20px;
+    right:20px;
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    height:28px;
-    padding:0 12px;
+    padding:10px 18px;
+    min-height:40px;
     border-radius:999px;
     background:#ffb100;
     color:#111111;
-    font-size:.63rem;
-    font-weight:800;
-    letter-spacing:.04em;
-    white-space:nowrap;
+    font-size:.9rem;
+    font-weight:900;
+    line-height:1;
+    letter-spacing:.02em;
+    box-shadow:0 8px 20px rgba(255, 177, 0, 0.22);
 }
 
 .campaign-hero__assurance > div:nth-child(3) small{
-    color:#d88900 !important;
+    color:#d88b00 !important;
 }
 
 .campaign-hero__assurance > div:nth-child(3) strong{
     color:#111111 !important;
-    padding-right:92px !important;
+    padding-right:152px !important;
 }
 
 .campaign-hero__assurance > div:nth-child(3) span{
     color:rgba(17,17,17,0.78) !important;
+    max-width:20ch !important;
 }
 
-@media(max-width:1050px){
+/* subtle hover polish */
+.campaign-hero__assurance > div{
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.campaign-hero__assurance > div:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 42px rgba(4, 16, 60, 0.24);
+}
+
+.campaign-hero__assurance > div:nth-child(3):hover{
+    transform:translateY(-10px);
+}
+
+/* responsive */
+@media (max-width: 1180px){
     .campaign-hero__assurance{
-        width:min(720px,68vw) !important;
-        left:34px !important;
-        bottom:24px !important;
-        gap:12px !important;
+        grid-template-columns:repeat(3, minmax(0,1fr)) !important;
+        gap:16px !important;
     }
 
     .campaign-hero__assurance > div,
     .campaign-hero__assurance div + div,
     .campaign-hero__assurance div:last-child{
-        min-height:128px !important;
-        padding:18px 16px 16px !important;
+        min-height:154px !important;
+        padding:20px 20px 18px !important;
     }
 
     .campaign-hero__assurance > div strong{
-        font-size:.92rem !important;
+        font-size:1.1rem !important;
     }
 
     .campaign-hero__assurance > div span{
-        font-size:.84rem !important;
+        font-size:.95rem !important;
+    }
+
+    .campaign-hero__assurance > div:nth-child(3) strong{
+        padding-right:132px !important;
+    }
+
+    .campaign-hero__assurance > div:nth-child(3)::before{
+        padding:9px 14px;
+        min-height:36px;
+        font-size:.8rem;
     }
 }
 
-@media(max-width:760px){
+@media (max-width: 820px){
     .campaign-hero__assurance{
         position:relative !important;
         left:auto !important;
+        right:auto !important;
         bottom:auto !important;
         width:100% !important;
-        margin-top:28px !important;
+        margin-top:26px !important;
         grid-template-columns:1fr !important;
-        gap:12px !important;
+        gap:14px !important;
     }
 
     .campaign-hero__assurance > div,
     .campaign-hero__assurance div + div,
     .campaign-hero__assurance div:last-child{
         min-height:auto !important;
-        padding:18px 16px !important;
+        padding:18px 18px 16px !important;
         transform:none !important;
+    }
+
+    .campaign-hero__assurance > div strong{
+        font-size:1.08rem !important;
+    }
+
+    .campaign-hero__assurance > div span{
+        max-width:none !important;
     }
 
     .campaign-hero__assurance > div:nth-child(3) strong{
