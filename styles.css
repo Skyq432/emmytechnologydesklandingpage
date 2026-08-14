@@ -757,3 +757,36 @@ button{cursor:pointer}
 /* === EMMYTECH HERO TRUST STRIP V2 END === */
 
 
+
+/* === EMMYTECH SURPRISE GIFT CLEANUP START === */
+
+/* remove duplicate FIRST 30 ONLY pill */
+.campaign-hero__assurance > div:nth-child(3)::before{
+    display:none !important;
+    content:none !important;
+}
+
+/* remove space previously reserved for badge */
+.campaign-hero__assurance > div:nth-child(3) strong{
+    padding-right:0 !important;
+    padding-top:0 !important;
+}
+
+/* cleaner gift-card composition */
+.campaign-hero__assurance > div:nth-child(3){
+    justify-content:center !important;
+}
+
+/* keep the gift message prominent */
+.campaign-hero__assurance > div:nth-child(3) strong{
+    font-size:clamp(1.35rem,1.6vw,1.75rem) !important;
+    margin-bottom:12px !important;
+}
+
+.campaign-hero__assurance > div:nth-child(3) span{
+    font-size:1rem !important;
+    line-height:1.45 !important;
+}
+
+/* === EMMYTECH SURPRISE GIFT CLEANUP END === */
+
