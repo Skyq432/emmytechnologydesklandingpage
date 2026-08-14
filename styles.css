@@ -75,11 +75,12 @@ button{cursor:pointer}
 .category-card img{width:100%;aspect-ratio:1.12/1;object-fit:cover;background:#f1ece7}.category-card div{display:grid;grid-template-columns:auto 1fr;column-gap:12px;row-gap:4px;padding:20px 20px 22px}.category-card div>span{grid-row:1/4;color:var(--yellow);font-size:.65rem;font-weight:800}.category-card h3{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.3rem}.category-card p{font-size:.76rem;color:var(--muted);line-height:1.6}
 
 /* story band */
-.story-band{background:#2b0710;padding:72px 0;color:#fff;position:relative;overflow:hidden}.story-band:before{content:"WORK / FOLD / LIVE / WORK / FOLD / LIVE";position:absolute;top:16px;left:0;white-space:nowrap;color:rgba(255,255,255,.08);font-size:1rem;letter-spacing:.15em}
-.story-band-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
-.story-image{border-radius:28px;overflow:hidden;min-height:610px;position:relative;background:#e7d8cb}.story-image img{width:100%;height:100%;min-height:610px;object-fit:cover}.story-image-tag{position:absolute;left:20px;bottom:20px;background:#fff;color:var(--ink);font-size:.6rem;font-weight:800;letter-spacing:.12em;padding:10px 12px;border-radius:8px}
-.story-copy h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2.8rem,4.7vw,5.2rem);line-height:.96;letter-spacing:-.06em}.story-copy h2 span{color:var(--yellow)}.story-copy>p:not(.eyebrow){font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.72);max-width:570px;margin:24px 0 30px}
-.story-products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}.story-products figure{background:#fff;border-radius:16px;overflow:hidden;color:var(--ink)}.story-products img{width:100%;aspect-ratio:1/1;object-fit:cover}.story-products figcaption{padding:10px 12px;font-size:.68rem;font-weight:700}
+.story-band{background:linear-gradient(135deg,#032489 0%,#021758 100%);padding:86px 0 90px;color:#fff;position:relative;overflow:hidden}.story-band:before{content:"WORK / FOLD / LIVE / WORK / FOLD / LIVE";position:absolute;top:18px;left:0;white-space:nowrap;color:rgba(255,255,255,.075);font-size:1rem;font-weight:700;letter-spacing:.15em}.story-band:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;right:-190px;bottom:-200px;background:rgba(255,177,0,.09);pointer-events:none}
+.story-band-shell{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center;position:relative;z-index:1}
+.story-image{border-radius:28px;overflow:hidden;min-height:650px;position:relative;background:#e7d8cb;border:1px solid rgba(255,255,255,.12)}.story-image img{width:100%;height:100%;min-height:650px;object-fit:cover}.story-image--lifestyle img{object-position:center 42%}.story-image:after{content:"";position:absolute;inset:auto 0 0;height:30%;background:linear-gradient(180deg,transparent,rgba(2,23,88,.12));pointer-events:none}.story-image-tag{position:absolute;z-index:2;left:20px;bottom:20px;background:#fff;color:var(--ink);font-size:.6rem;font-weight:800;letter-spacing:.12em;padding:10px 13px;border-radius:9px}
+.story-copy{max-width:620px}.story-copy h2{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(3rem,4.65vw,5.15rem);line-height:.94;letter-spacing:-.065em}.story-copy h2 span{color:var(--yellow)}.story-copy>p:not(.eyebrow){font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.78);max-width:570px;margin:24px 0 30px}
+.story-products{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:26px}.story-products figure{background:#fff;border:1px solid rgba(255,255,255,.14);border-radius:16px;overflow:hidden;color:var(--ink)}.story-products img{width:100%;aspect-ratio:1.05/1;object-fit:cover;background:#f4efe9}.story-products figure:nth-child(1) img{object-fit:contain;padding:7px}.story-products figure:nth-child(2) img{object-position:center 44%}.story-products figure:nth-child(3) img{object-position:center 47%}.story-products figcaption{padding:11px 12px 12px;font-size:.68rem;font-weight:800}
+.story-cta{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:10px;background:var(--yellow);color:var(--ink);font-size:.76rem;font-weight:800;border:1px solid var(--yellow);box-shadow:none}.story-cta:hover{background:#f2aa00}.story-cta span{font-size:1rem;color:var(--blue)}
 .text-link{font-size:.76rem;font-weight:800;display:inline-flex;gap:8px;align-items:center}.text-link--light{color:#fff}.text-link span{color:var(--yellow);font-size:1rem}
 
 /* friction */
@@ -143,4 +144,19 @@ button{cursor:pointer}
   .hero-blue{padding:58px 24px 96px}.hero-copy h1{font-size:3.5rem}.hero-price-row{align-items:start;flex-direction:column;gap:8px}.hero-photo{min-height:450px}.hero-floating-card{display:none}.hero-photo-label{left:16px;bottom:16px}.hero-facts{left:24px;right:24px;bottom:24px;font-size:.5rem}
   .section-intro,.collection-head{gap:22px;margin-bottom:30px}.section-intro h2,.collection-head h2,.audience-head h2,.compare-copy h2,.trust-copy h2,.order-copy h2,.faq-title h2{font-size:2.6rem}
   .category-card{grid-template-columns:1fr}.story-products{grid-template-columns:1fr 1fr}.story-products figure:last-child{grid-column:1/-1}.friction-grid,.audience-grid,.steps-grid,.offer-benefits{grid-template-columns:1fr}.friction-feature{grid-column:auto}.collection-grid{grid-template-columns:1fr}.collection-card--large{grid-column:auto}.collection-card img,.collection-card--large img{min-height:360px}.spec-strip{grid-template-columns:1fr}.spec-strip span{border-right:0!important;border-bottom:1px solid var(--line)!important}.spec-strip span:last-child{border-bottom:0!important}.compare-row{grid-template-columns:1.2fr .8fr .8fr;padding:0 12px;font-size:.67rem}.offer-panel{padding:28px 18px}.offer-head h2{font-size:3rem}.offer-benefits{margin-top:28px}.offer-benefits article{min-height:150px}.offer-benefits h3{margin-top:30px}.field-grid{grid-template-columns:1fr}.field--full{grid-column:auto}.footer-top,.footer-bottom{align-items:flex-start;flex-direction:column}.footer-contact{flex-wrap:wrap}.closing-word{font-size:10rem}.closing-actions{align-items:flex-start;flex-direction:column}.trust-visual,.trust-visual img{min-height:390px}
+}
+
+/* Blue lifestyle story section refinements */
+@media(max-width:980px){
+  .story-band-shell{grid-template-columns:1fr;gap:36px}
+  .story-copy{max-width:none;order:1}
+  .story-image{order:2;min-height:560px}
+  .story-image img{min-height:560px}
+}
+@media(max-width:620px){
+  .story-band{padding:68px 0}
+  .story-copy h2{font-size:clamp(2.55rem,13vw,3.7rem)}
+  .story-products{grid-template-columns:1fr 1fr}
+  .story-products figure:last-child{grid-column:1/-1}
+  .story-image,.story-image img{min-height:470px}
 }
