@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root{
   --blue:#032489;
@@ -789,4 +789,1015 @@ button{cursor:pointer}
 }
 
 /* === EMMYTECH SURPRISE GIFT CLEANUP END === */
+
+
+
+/* === PROFESSIONAL EMMYTECH HERO V4 START === */
+
+
+/* --------------------------------------------
+   HERO OUTER SPACE
+--------------------------------------------- */
+
+.hero-pro{
+  background:#f6f7fb;
+  padding:22px 26px 0;
+}
+
+
+/* --------------------------------------------
+   LARGE ROUNDED CAMPAIGN CONTAINER
+--------------------------------------------- */
+
+.hero-pro-shell{
+  width:min(1480px,100%);
+  margin:0 auto;
+
+  position:relative;
+  overflow:hidden;
+
+  border-radius:34px;
+
+  color:#fff;
+
+  background:
+    radial-gradient(
+      circle at 35% 55%,
+      rgba(255,177,0,.10) 0,
+      rgba(255,177,0,.10) 16%,
+      transparent 16.3%
+    ),
+    linear-gradient(
+      135deg,
+      #032489 0%,
+      #062a99 52%,
+      #021758 100%
+    );
+
+  box-shadow:
+    0 28px 70px rgba(3,36,137,.16);
+}
+
+
+/* subtle giant background word */
+
+.hero-pro-shell:before{
+  content:"WORKSPACE";
+
+  position:absolute;
+
+  left:-20px;
+  bottom:-48px;
+
+  z-index:0;
+
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(8rem,15vw,16rem);
+  line-height:.78;
+
+  letter-spacing:-.08em;
+
+  font-weight:800;
+
+  color:rgba(255,255,255,.035);
+
+  white-space:nowrap;
+
+  pointer-events:none;
+}
+
+
+/* --------------------------------------------
+   IN-HERO HEADER
+--------------------------------------------- */
+
+.hero-pro-topbar{
+  height:84px;
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(210px,.8fr)
+    auto
+    minmax(210px,.8fr);
+
+  align-items:center;
+
+  gap:28px;
+
+  padding:0 34px;
+
+  position:relative;
+  z-index:10;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.12);
+}
+
+
+.hero-pro-brand{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:11px;
+
+  width:max-content;
+
+  color:#fff;
+
+  font-size:.78rem;
+
+  letter-spacing:.025em;
+
+  white-space:nowrap;
+}
+
+
+.hero-pro-brand img{
+  width:37px;
+  height:37px;
+
+  object-fit:contain;
+}
+
+
+.hero-pro-brand strong{
+  font-weight:900;
+}
+
+
+.hero-pro-nav{
+  display:flex;
+
+  justify-content:center;
+  align-items:center;
+
+  gap:7px;
+
+  padding:6px;
+
+  border-radius:999px;
+
+  background:
+    rgba(0,0,0,.12);
+
+  border:
+    1px solid rgba(255,255,255,.08);
+}
+
+
+.hero-pro-nav a{
+  padding:10px 15px;
+
+  border-radius:999px;
+
+  color:
+    rgba(255,255,255,.76);
+
+  font-size:.68rem;
+
+  font-weight:600;
+
+  transition:.2s ease;
+}
+
+
+.hero-pro-nav a:hover{
+  color:#fff;
+
+  background:
+    rgba(255,255,255,.10);
+}
+
+
+.hero-pro-top-actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  align-items:center;
+
+  gap:10px;
+}
+
+
+.hero-pro-order{
+  min-height:45px;
+
+  padding:0 19px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:12px;
+
+  border-radius:999px;
+
+  color:#0c1220;
+
+  background:#ffb100;
+
+  font-size:.7rem;
+
+  font-weight:900;
+
+  transition:.2s ease;
+}
+
+
+.hero-pro-order:hover{
+  background:#f4aa00;
+
+  transform:translateY(-1px);
+}
+
+
+.hero-pro-order span{
+  font-size:1rem;
+}
+
+
+.hero-pro-wa{
+  width:45px;
+  height:45px;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  color:#fff;
+
+  border:
+    1px solid rgba(255,255,255,.22);
+
+  background:
+    rgba(255,255,255,.08);
+
+  font-size:.62rem;
+
+  font-weight:900;
+}
+
+
+/* --------------------------------------------
+   MAIN HERO BODY
+--------------------------------------------- */
+
+.hero-pro-body{
+  min-height:620px;
+
+  padding:
+    48px 34px 32px;
+
+  display:grid;
+
+  grid-template-columns:
+    .84fr
+    1.16fr;
+
+  align-items:center;
+
+  gap:46px;
+
+  position:relative;
+  z-index:2;
+}
+
+
+/* --------------------------------------------
+   COPY
+--------------------------------------------- */
+
+.hero-pro-copy{
+  padding-left:
+    clamp(10px,3vw,42px);
+
+  max-width:610px;
+}
+
+
+.hero-pro-pill{
+  width:max-content;
+
+  max-width:100%;
+
+  min-height:33px;
+
+  padding:0 13px;
+
+  margin-bottom:24px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  border-radius:999px;
+
+  border:
+    1px solid rgba(255,255,255,.19);
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size:.59rem;
+
+  font-weight:800;
+
+  letter-spacing:.11em;
+}
+
+
+.hero-pro-pill span{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:#ffb100;
+}
+
+
+.hero-pro-copy h1{
+  margin:0;
+
+  font-family:
+    'Plus Jakarta Sans',
+    sans-serif;
+
+  font-size:
+    clamp(4.2rem,6.5vw,7.3rem);
+
+  line-height:.82;
+
+  letter-spacing:-.075em;
+
+  font-weight:800;
+
+  color:#fff;
+}
+
+
+.hero-pro-copy h1 strong{
+  display:block;
+
+  color:#ffb100;
+
+  font:inherit;
+}
+
+
+.hero-pro-lede{
+  max-width:470px;
+
+  margin-top:28px;
+
+  color:
+    rgba(255,255,255,.84);
+
+  font-size:1.04rem;
+
+  line-height:1.65;
+}
+
+
+.hero-pro-mini{
+  margin-top:12px;
+
+  color:#fff;
+
+  font-size:.71rem;
+
+  line-height:1.5;
+
+  font-weight:800;
+}
+
+
+/* --------------------------------------------
+   PRICE + CTA
+--------------------------------------------- */
+
+.hero-pro-commerce{
+  margin-top:34px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  gap:34px;
+
+  flex-wrap:wrap;
+}
+
+
+.hero-pro-price small{
+  display:block;
+
+  margin-bottom:6px;
+
+  color:
+    rgba(255,255,255,.55);
+
+  font-size:.55rem;
+
+  letter-spacing:.14em;
+
+  font-weight:800;
+}
+
+
+.hero-pro-price strong{
+  display:block;
+
+  font-family:
+    'Plus Jakarta Sans',
+    sans-serif;
+
+  color:#ffb100;
+
+  font-size:2.6rem;
+
+  letter-spacing:-.055em;
+
+  line-height:1;
+}
+
+
+.hero-pro-price span{
+  display:block;
+
+  margin-top:7px;
+
+  color:
+    rgba(255,255,255,.72);
+
+  font-size:.65rem;
+}
+
+
+.hero-pro-buttons{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+}
+
+
+.hero-pro-primary,
+.hero-pro-secondary{
+  min-height:49px;
+
+  padding:0 19px;
+
+  border-radius:12px;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:18px;
+
+  font-size:.69rem;
+
+  font-weight:900;
+}
+
+
+.hero-pro-primary{
+  background:#ffb100;
+
+  color:#0c1220;
+
+  border:
+    1px solid #ffb100;
+}
+
+
+.hero-pro-primary:hover{
+  background:#f3aa00;
+}
+
+
+.hero-pro-secondary{
+  color:#fff;
+
+  border:
+    1px solid rgba(255,255,255,.30);
+
+  background:
+    rgba(255,255,255,.06);
+}
+
+
+.hero-pro-secondary:hover{
+  background:
+    rgba(255,255,255,.11);
+}
+
+
+/* --------------------------------------------
+   MAIN PRODUCT IMAGE
+--------------------------------------------- */
+
+.hero-pro-visual{
+  height:535px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  background:#eadfd4;
+
+  box-shadow:
+    0 20px 52px rgba(0,0,0,.18);
+}
+
+
+.hero-pro-visual img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  /*
+     IMPORTANT:
+     THIS IS THE OPEN LIFESTYLE HERO IMAGE
+  */
+
+  object-position:center;
+}
+
+
+.hero-pro-visual:after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3,36,137,.22) 0%,
+      transparent 27%
+    );
+
+  pointer-events:none;
+}
+
+
+.hero-pro-image-caption{
+  position:absolute;
+
+  z-index:3;
+
+  right:18px;
+  bottom:18px;
+
+  min-width:180px;
+
+  padding:14px 16px;
+
+  border-radius:14px;
+
+  background:
+    rgba(255,255,255,.94);
+
+  color:#0c1220;
+
+  box-shadow:
+    0 12px 30px
+    rgba(8,18,40,.12);
+}
+
+
+.hero-pro-image-caption span{
+  display:block;
+
+  margin-bottom:5px;
+
+  color:#032489;
+
+  font-size:.52rem;
+
+  font-weight:900;
+
+  letter-spacing:.12em;
+}
+
+
+.hero-pro-image-caption strong{
+  display:block;
+
+  font-size:.76rem;
+
+  font-weight:800;
+}
+
+
+/* --------------------------------------------
+   HERO BOTTOM MINI TRUST LINE
+--------------------------------------------- */
+
+.hero-pro-bottom{
+  min-height:66px;
+
+  padding:0 42px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:40px;
+
+  position:relative;
+  z-index:3;
+
+  border-top:
+    1px solid rgba(255,255,255,.12);
+
+  color:
+    rgba(255,255,255,.68);
+
+  font-size:.62rem;
+
+  font-weight:700;
+}
+
+
+.hero-pro-bottom span{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+}
+
+
+.hero-pro-bottom i{
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#ffb100;
+}
+
+
+/* ==================================================
+   3 PROFESSIONAL TRUMP CARDS BELOW HERO
+================================================== */
+
+.hero-trust-strip{
+  background:#f6f7fb;
+
+  padding:
+    22px 26px 68px;
+}
+
+
+.hero-trust-grid{
+  width:min(1380px,100%);
+
+  margin:0 auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,minmax(0,1fr));
+
+  gap:17px;
+}
+
+
+.hero-trust-card{
+  min-height:152px;
+
+  display:grid;
+
+  grid-template-columns:
+    auto 1fr;
+
+  gap:18px;
+
+  align-items:flex-start;
+
+  padding:24px 25px;
+
+  border-radius:24px;
+
+  background:#fff;
+
+  border:
+    1px solid #e3e8f3;
+
+  box-shadow:
+    0 12px 28px rgba(12,35,95,.055);
+}
+
+
+.hero-trust-icon{
+  width:48px;
+  height:48px;
+
+  display:grid;
+
+  place-items:center;
+
+  flex:0 0 auto;
+
+  border-radius:15px;
+
+  background:#edf2ff;
+
+  font-size:1.35rem;
+}
+
+
+.hero-trust-number{
+  display:block;
+
+  margin-bottom:9px;
+
+  color:#ffb100;
+
+  font-size:.57rem;
+
+  font-weight:900;
+
+  letter-spacing:.10em;
+}
+
+
+.hero-trust-card h3{
+  margin:0 0 7px;
+
+  color:#0c1220;
+
+  font-family:
+    'Plus Jakarta Sans',
+    sans-serif;
+
+  font-size:1.08rem;
+
+  line-height:1.1;
+
+  letter-spacing:-.03em;
+}
+
+
+.hero-trust-card p{
+  margin:0;
+
+  color:#657087;
+
+  font-size:.74rem;
+
+  line-height:1.55;
+}
+
+
+/* Surprise gift gets premium emphasis */
+
+.hero-trust-card--gift{
+  background:
+    linear-gradient(
+      135deg,
+      #fff9ea 0%,
+      #fff0c6 100%
+    );
+
+  border:
+    1.5px solid #ffb100;
+
+  box-shadow:
+    0 15px 35px
+    rgba(255,177,0,.10);
+}
+
+
+.hero-trust-card--gift
+.hero-trust-icon{
+  background:#ffb100;
+}
+
+
+/* --------------------------------------------
+   RESPONSIVE
+--------------------------------------------- */
+
+@media(max-width:1100px){
+
+  .hero-pro-topbar{
+    grid-template-columns:
+      auto
+      1fr
+      auto;
+  }
+
+  .hero-pro-nav{
+    gap:3px;
+  }
+
+  .hero-pro-nav a{
+    padding:9px 9px;
+  }
+
+  .hero-pro-body{
+    grid-template-columns:
+      .95fr
+      1.05fr;
+
+    gap:28px;
+  }
+
+  .hero-pro-visual{
+    height:480px;
+  }
+
+}
+
+
+@media(max-width:850px){
+
+  .hero-pro{
+    padding:
+      12px 12px 0;
+  }
+
+  .hero-pro-shell{
+    border-radius:25px;
+  }
+
+  .hero-pro-topbar{
+    height:70px;
+
+    grid-template-columns:
+      1fr
+      auto;
+
+    padding:
+      0 18px;
+  }
+
+  .hero-pro-nav{
+    display:none;
+  }
+
+  .hero-pro-brand img{
+    width:31px;
+    height:31px;
+  }
+
+  .hero-pro-brand{
+    font-size:.7rem;
+  }
+
+  .hero-pro-wa{
+    display:none;
+  }
+
+  .hero-pro-order{
+    min-height:40px;
+
+    padding:
+      0 15px;
+
+    font-size:.65rem;
+  }
+
+  .hero-pro-body{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:30px;
+
+    min-height:0;
+
+    padding:
+      34px 18px 24px;
+  }
+
+  .hero-pro-copy{
+    padding-left:0;
+
+    max-width:100%;
+  }
+
+  .hero-pro-copy h1{
+    font-size:
+      clamp(3.3rem,16vw,5rem);
+  }
+
+  .hero-pro-lede{
+    font-size:.94rem;
+  }
+
+  .hero-pro-commerce{
+    align-items:flex-start;
+
+    flex-direction:column;
+
+    gap:22px;
+  }
+
+  .hero-pro-buttons{
+    width:100%;
+  }
+
+  .hero-pro-primary,
+  .hero-pro-secondary{
+    flex:1;
+  }
+
+  .hero-pro-visual{
+    width:100%;
+
+    height:auto;
+
+    aspect-ratio:16/11;
+  }
+
+  .hero-pro-bottom{
+    padding:17px 18px;
+
+    min-height:auto;
+
+    gap:11px;
+
+    flex-wrap:wrap;
+  }
+
+  .hero-pro-bottom span{
+    width:
+      calc(50% - 7px);
+  }
+
+  .hero-trust-strip{
+    padding:
+      15px 12px 45px;
+  }
+
+  .hero-trust-grid{
+    grid-template-columns:1fr;
+
+    gap:11px;
+  }
+
+  .hero-trust-card{
+    min-height:0;
+
+    padding:20px;
+
+    border-radius:20px;
+  }
+
+}
+
+
+@media(max-width:480px){
+
+  .hero-pro-top-actions{
+    gap:6px;
+  }
+
+  .hero-pro-order span{
+    display:none;
+  }
+
+  .hero-pro-pill{
+    font-size:.51rem;
+  }
+
+  .hero-pro-image-caption{
+    left:12px;
+    right:12px;
+    bottom:12px;
+
+    min-width:0;
+  }
+
+  .hero-pro-bottom span{
+    width:100%;
+  }
+
+}
+
+
+/* === PROFESSIONAL EMMYTECH HERO V4 END === */
+
 
