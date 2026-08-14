@@ -820,19 +820,7 @@ button{cursor:pointer}
 
   color:#fff;
 
-  background:
-    radial-gradient(
-      circle at 35% 55%,
-      rgba(255,177,0,.10) 0,
-      rgba(255,177,0,.10) 16%,
-      transparent 16.3%
-    ),
-    linear-gradient(
-      135deg,
-      #032489 0%,
-      #062a99 52%,
-      #021758 100%
-    );
+  background: #032489;
 
   box-shadow:
     0 28px 70px rgba(3,36,137,.16);
