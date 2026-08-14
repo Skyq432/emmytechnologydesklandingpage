@@ -1789,3 +1789,495 @@ button{cursor:pointer}
 /* === PROFESSIONAL EMMYTECH HERO V4 END === */
 
 
+
+/* === EMMYTECH SMART ORDER POPUP START === */
+
+
+/* =========================================================
+   ORDER POPUP
+========================================================= */
+
+.quick-order-modal{
+    position:fixed;
+    inset:0;
+
+    z-index:9000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:
+        opacity .22s ease,
+        visibility .22s ease;
+}
+
+
+.quick-order-modal.is-open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+
+.quick-order-backdrop{
+    position:absolute;
+    inset:0;
+
+    background:
+        rgba(2,12,48,.70);
+
+    backdrop-filter:
+        blur(10px);
+}
+
+
+.quick-order-panel{
+    position:relative;
+    z-index:2;
+
+    width:min(760px,100%);
+
+    max-height:
+        calc(100vh - 40px);
+
+    overflow-y:auto;
+
+    border-radius:28px;
+
+    background:#ffffff;
+
+    box-shadow:
+        0 35px 100px
+        rgba(0,0,0,.28);
+
+    scrollbar-width:thin;
+}
+
+
+.quick-order-panel::-webkit-scrollbar{
+    width:7px;
+}
+
+
+.quick-order-panel::-webkit-scrollbar-thumb{
+    background:#d9dfeb;
+
+    border-radius:999px;
+}
+
+
+/* =========================================================
+   POPUP HEADER
+========================================================= */
+
+.quick-order-header{
+    position:sticky;
+    top:0;
+
+    z-index:5;
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:
+        27px 30px 24px;
+
+    background:#fff;
+
+    border-bottom:
+        1px solid #e9edf5;
+}
+
+
+.quick-order-heading{
+    max-width:530px;
+}
+
+
+.quick-order-eyebrow{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#032489;
+
+    font-size:.58rem;
+
+    line-height:1;
+
+    font-weight:900;
+
+    letter-spacing:.14em;
+}
+
+
+.quick-order-heading h2{
+    margin:0;
+
+    font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
+
+    color:#0c1220;
+
+    font-size:
+        clamp(1.7rem,3vw,2.4rem);
+
+    line-height:1;
+
+    letter-spacing:-.05em;
+}
+
+
+.quick-order-heading p{
+    margin:
+        10px 0 0;
+
+    max-width:480px;
+
+    color:#657087;
+
+    font-size:.77rem;
+
+    line-height:1.55;
+}
+
+
+.quick-order-price{
+    display:inline-flex;
+
+    margin-top:12px;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#032489;
+
+    font-size:.68rem;
+
+    font-weight:800;
+}
+
+
+.quick-order-price strong{
+    color:#ffb100;
+
+    font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
+
+    font-size:1rem;
+}
+
+
+.quick-order-close{
+    flex:0 0 auto;
+
+    width:42px;
+    height:42px;
+
+    display:grid;
+    place-items:center;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#f1f4fa;
+
+    color:#0c1220;
+
+    font-size:1.25rem;
+
+    line-height:1;
+}
+
+
+.quick-order-close:hover{
+    background:#e8edf7;
+}
+
+
+/* =========================================================
+   SAVED CUSTOMER MESSAGE
+========================================================= */
+
+.quick-order-saved{
+    display:none;
+
+    margin:
+        22px 30px 0;
+
+    padding:
+        14px 16px;
+
+    border-radius:14px;
+
+    background:#eef3ff;
+
+    border:
+        1px solid #dce6ff;
+
+    color:#032489;
+
+    font-size:.72rem;
+
+    line-height:1.55;
+}
+
+
+.quick-order-saved.is-visible{
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:10px;
+}
+
+
+.quick-order-saved-icon{
+    flex:0 0 auto;
+
+    width:28px;
+    height:28px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:9px;
+
+    background:#032489;
+
+    color:#fff;
+
+    font-size:.72rem;
+}
+
+
+.quick-order-saved strong{
+    display:block;
+
+    margin-bottom:2px;
+
+    color:#0c1220;
+}
+
+
+/* =========================================================
+   FORM INSIDE MODAL
+========================================================= */
+
+.quick-order-mount{
+    padding:
+        24px 30px 30px;
+}
+
+
+.quick-order-modal .order-form{
+    width:100% !important;
+
+    max-width:none !important;
+
+    margin:0 !important;
+
+    padding:0 !important;
+
+    border:0 !important;
+
+    border-radius:0 !important;
+
+    box-shadow:none !important;
+
+    background:#fff !important;
+
+    opacity:1 !important;
+
+    transform:none !important;
+}
+
+
+.quick-order-modal .form-heading{
+    display:none !important;
+}
+
+
+.quick-order-modal .btn--form{
+    min-height:54px;
+
+    border-radius:13px;
+
+    background:#032489;
+
+    color:#fff;
+
+    font-weight:900;
+}
+
+
+.quick-order-modal .btn--form:hover{
+    background:#0c35ad;
+}
+
+
+.quick-order-modal .field input,
+.quick-order-modal .field textarea{
+    background:#f8f9fc;
+}
+
+
+.quick-order-modal .delivery-status{
+    border-radius:14px;
+}
+
+
+.quick-order-modal .form-note{
+    text-align:center;
+}
+
+
+/* =========================================================
+   INLINE ORDER PLACEHOLDER WHILE FORM IS IN POPUP
+========================================================= */
+
+.order-form-popup-placeholder{
+    min-height:320px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+
+    padding:40px;
+
+    text-align:center;
+
+    border-radius:24px;
+
+    background:#f4f7ff;
+
+    border:
+        1px solid #e2e9f8;
+}
+
+
+.order-form-popup-placeholder strong{
+    font-family:
+        'Plus Jakarta Sans',
+        sans-serif;
+
+    font-size:1.35rem;
+
+    color:#0c1220;
+}
+
+
+.order-form-popup-placeholder p{
+    max-width:380px;
+
+    color:#657087;
+
+    font-size:.78rem;
+
+    line-height:1.6;
+}
+
+
+.order-form-popup-placeholder button{
+    min-height:48px;
+
+    padding:0 22px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#ffb100;
+
+    color:#0c1220;
+
+    font-size:.74rem;
+
+    font-weight:900;
+}
+
+
+/* stop body scrolling while popup is open */
+
+body.quick-order-open{
+    overflow:hidden !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:640px){
+
+    .quick-order-modal{
+        padding:8px;
+        align-items:flex-end;
+    }
+
+    .quick-order-panel{
+        width:100%;
+
+        max-height:
+            calc(100vh - 16px);
+
+        border-radius:
+            24px 24px 16px 16px;
+    }
+
+    .quick-order-header{
+        padding:
+            22px 19px 18px;
+    }
+
+    .quick-order-heading h2{
+        font-size:1.75rem;
+    }
+
+    .quick-order-heading p{
+        font-size:.71rem;
+    }
+
+    .quick-order-saved{
+        margin:
+            16px 18px 0;
+    }
+
+    .quick-order-mount{
+        padding:
+            19px 18px 24px;
+    }
+
+    .quick-order-modal .field-grid{
+        grid-template-columns:1fr;
+    }
+
+    .quick-order-modal .field{
+        grid-column:1 !important;
+    }
+
+}
+
+
+/* === EMMYTECH SMART ORDER POPUP END === */
+
+
