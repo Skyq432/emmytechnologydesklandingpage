@@ -8,6 +8,7 @@
   <title>Foldable Workspace Desk | Emmy Technology</title>
   <link rel="icon" href="assets/brand-mark-yellow.png" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="order-flow-v2.css?v=2" />
 </head>
 <body>
 <main>
@@ -343,41 +344,41 @@
       <div class="shell trust-grid"><div class="trust-copy reveal"><p class="eyebrow">10 / WHO YOU'RE BUYING FROM</p><h2>A real business.<br><span>Not an anonymous page.</span></h2><p>Emmy Technology is an established Ibadan technology business serving students, professionals and customers across our product and support services.</p><p>Physical locations. Real contact numbers. A team you can speak to.</p><div class="trust-points"><span>Sango, Ibadan</span><span>University of Ibadan</span><span>+234 814 650 3700</span></div></div><div class="trust-visual reveal"><img src="assets/editorial-hero-open.png" alt="Foldable Workspace Desk at home" loading="lazy" /><div><strong>THE GADGET PLUG<br>YOU CAN TRUST.</strong><a href="https://wa.me/2348146503700" target="_blank" rel="noopener">Talk to Emmy Technology ↗</a></div></div></div>
     </section>
 
-    <section class="order section et-order-section" id="order">
-  <div class="shell et-order-grid">
-
-    <div class="et-order-copy reveal">
-      <p class="eyebrow">11 / ORDER IN MINUTES</p>
+    <section class="et2-order-section" id="order">
+  <div class="et2-order-wrap">
+    <div class="et2-order-copy">
+      <span class="et2-kicker">11 / ORDER IN MINUTES</span>
       <h2>Order today.<br><span>Pay when it arrives.</span></h2>
-      <p class="et-order-lede">Place your order in a minute. Emmy Technology confirms your details, prepares your desk and dispatches it to you.</p>
+      <p class="et2-order-lede">Place your order in a minute. Emmy Technology confirms your details, prepares your Foldable Workspace Desk and dispatches it to you.</p>
 
-      <div class="et-order-process" aria-label="How ordering works">
-        <div><span>01</span><strong>Place your order</strong><small>Enter your delivery details.</small></div>
-        <div><span>02</span><strong>We confirm</strong><small>We contact you to confirm your order.</small></div>
-        <div><span>03</span><strong>We dispatch</strong><small>Your Foldable Workspace Desk is prepared and sent.</small></div>
-        <div><span>04</span><strong>You receive & pay</strong><small>Payment is made on delivery.</small></div>
+      <div class="et2-steps">
+        <div class="et2-step"><b>01</b><strong>Place your order</strong><span>Enter your delivery details.</span></div>
+        <div class="et2-step"><b>02</b><strong>We confirm</strong><span>We contact you to confirm your order.</span></div>
+        <div class="et2-step"><b>03</b><strong>We dispatch</strong><span>Your desk is prepared and sent.</span></div>
+        <div class="et2-step"><b>04</b><strong>You receive & pay</strong><span>Payment is made on delivery.</span></div>
       </div>
     </div>
 
-    <aside class="et-order-launch reveal">
-      <span class="et-order-badge">PAY ON DELIVERY</span>
+    <aside class="et2-order-card">
+      <span class="et2-badge">PAY ON DELIVERY</span>
       <h3>Ready to get your workspace?</h3>
-      <p>Complete your details once. We remember them on this device, so ordering again is faster.</p>
+      <p>Complete your details once. We remember them on this device, so future orders are faster.</p>
 
-      <div class="et-order-price-row">
+      <div class="et2-price-row">
         <div><small>LAUNCH PRICE</small><strong>&#8358;64,900</strong></div>
         <span>1–2 day delivery</span>
       </div>
 
-      <ul>
+      <ul class="et2-benefits">
         <li>Free delivery within Ibadan</li>
         <li>7-day return window</li>
         <li>Payment on delivery</li>
       </ul>
 
-      <button type="button" class="et-order-open" data-order-trigger>Complete my order <span>&rarr;</span></button>
+      <button type="button" class="et2-open-order" data-order-trigger>
+        <span>Complete my order</span><span>&rarr;</span>
+      </button>
     </aside>
-
   </div>
 </section>
 
@@ -462,6 +463,66 @@
 </div>
 <!-- === EMMYTECH STATIC ORDER MODAL END === -->
 
+
+<!-- === EMMYTECH ORDER V2 MODAL START === -->
+<div class="et2-modal" id="et2OrderModal" aria-hidden="true">
+  <div class="et2-backdrop" data-et2-close></div>
+  <section class="et2-modal-card" role="dialog" aria-modal="true" aria-labelledby="et2OrderTitle">
+    <header class="et2-modal-head">
+      <div>
+        <small>FOLDABLE WORKSPACE DESK</small>
+        <h2 id="et2OrderTitle">Complete your order.</h2>
+        <p>&#8358;64,900 · Payment on delivery</p>
+      </div>
+      <button type="button" class="et2-close" data-et2-close aria-label="Close">&times;</button>
+    </header>
+
+    <div class="et2-saved" id="et2SavedNotice" hidden>
+      <strong>Your details are already saved.</strong>
+      Review them below and continue when ready.
+    </div>
+
+    <form class="et2-form" id="et2OrderForm">
+      <div class="et2-fields">
+        <label class="et2-field et2-full">Full name *
+          <input name="name" type="text" autocomplete="name" required placeholder="Your full name">
+        </label>
+        <label class="et2-field">Phone number *
+          <input name="phone" type="tel" autocomplete="tel" required placeholder="080...">
+        </label>
+        <label class="et2-field">WhatsApp number
+          <input name="whatsapp" type="tel" autocomplete="tel" placeholder="Optional if same as phone">
+        </label>
+        <label class="et2-field">State *
+          <input name="state" type="text" required placeholder="e.g. Oyo">
+        </label>
+        <label class="et2-field">City / Area *
+          <input name="city" type="text" required placeholder="e.g. Ibadan">
+        </label>
+        <label class="et2-field et2-full">Delivery address *
+          <textarea name="address" rows="3" required placeholder="House number, street, landmark..."></textarea>
+        </label>
+      </div>
+
+      <div class="et2-delivery" id="et2DeliveryStatus">
+        <span>Delivery</span><strong>Enter your city to see delivery information.</strong>
+      </div>
+
+      <label class="et2-confirm">
+        <input name="confirm" type="checkbox" required>
+        <span>I confirm the details above are correct and understand payment is made on delivery.</span>
+      </label>
+
+      <button class="et2-submit" type="submit">
+        <span>Continue to WhatsApp</span><span>&rarr;</span>
+      </button>
+      <p class="et2-note">No online payment is requested here.</p>
+    </form>
+  </section>
+</div>
+<!-- === EMMYTECH ORDER V2 MODAL END === -->
+
+  <script src="order-flow-v2.js?v=2" defer></script>
 </body>
 </html>
 
