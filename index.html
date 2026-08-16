@@ -8,6 +8,469 @@
   <title>Foldable Workspace Desk | Emmy Technology</title>
   <link rel="icon" href="assets/brand-mark-yellow.png" />
   <link rel="stylesheet" href="styles.css" />
+
+<style id="emmytech-order-critical">
+/* Verified EmmyTech order system: intentionally inline so the order flow
+   cannot fall back to raw browser HTML if the large site stylesheet is stale. */
+#order.etx-order{
+  padding:92px 0;
+  background:#f7f9fd;
+  overflow:hidden;
+  color:#0c1220;
+}
+#order.etx-order,
+#order.etx-order *{
+  box-sizing:border-box;
+}
+.etx-wrap{
+  width:min(1160px,calc(100% - 64px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(360px,.75fr);
+  gap:72px;
+  align-items:center;
+}
+.etx-copy{
+  position:static!important;
+  max-width:640px;
+}
+.etx-kicker{
+  margin:0 0 20px;
+  color:#032489;
+  font-size:.68rem;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.etx-copy h2{
+  margin:0;
+  color:#0b1220;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  font-size:clamp(3.4rem,5.3vw,5.5rem);
+  line-height:.91;
+  letter-spacing:-.06em;
+  font-weight:800;
+}
+.etx-copy h2 span{color:#032489}
+.etx-lede{
+  max-width:545px;
+  margin:26px 0 0;
+  color:#657087;
+  font-size:.94rem;
+  line-height:1.72;
+}
+.etx-steps{
+  margin-top:34px;
+  border-top:1px solid #dce4f0;
+}
+.etx-step{
+  min-height:64px;
+  padding:12px 0;
+  display:grid;
+  grid-template-columns:42px 145px 1fr;
+  gap:14px;
+  align-items:center;
+  border-bottom:1px solid #dce4f0;
+}
+.etx-step b{
+  color:#ffb100;
+  font-size:.66rem;
+  font-weight:900;
+}
+.etx-step strong{
+  color:#101827;
+  font-size:.82rem;
+  line-height:1.25;
+}
+.etx-step small{
+  color:#788399;
+  font-size:.7rem;
+  line-height:1.4;
+}
+.etx-card{
+  position:relative;
+  min-height:420px;
+  padding:40px;
+  border-radius:28px;
+  background:#032489;
+  color:#fff;
+  overflow:hidden;
+  box-shadow:0 24px 60px rgba(3,36,137,.14);
+}
+.etx-card:after{
+  content:'ORDER';
+  position:absolute;
+  left:-18px;
+  bottom:-25px;
+  color:rgba(255,255,255,.045);
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  font-size:7.25rem;
+  line-height:.8;
+  font-weight:900;
+  letter-spacing:-.08em;
+  pointer-events:none;
+}
+.etx-card>*{position:relative;z-index:2}
+.etx-badge{
+  display:inline-flex;
+  width:max-content;
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  color:#ffb100;
+  font-size:.58rem;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.etx-card h3{
+  max-width:390px;
+  margin:23px 0 0;
+  color:#fff;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  font-size:clamp(2.15rem,3vw,3rem);
+  line-height:.98;
+  letter-spacing:-.05em;
+}
+.etx-card>p{
+  max-width:390px;
+  margin:17px 0 0;
+  color:rgba(255,255,255,.74);
+  font-size:.76rem;
+  line-height:1.65;
+}
+.etx-price{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:18px;
+  margin-top:26px;
+  padding-top:22px;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+.etx-price small{
+  display:block;
+  color:rgba(255,255,255,.55);
+  font-size:.55rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.etx-price strong{
+  display:block;
+  margin-top:5px;
+  color:#ffb100;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  font-size:2rem;
+  line-height:1;
+  letter-spacing:-.04em;
+}
+.etx-price>span{
+  padding-bottom:3px;
+  color:rgba(255,255,255,.72);
+  font-size:.67rem;
+}
+.etx-benefits{
+  display:grid;
+  gap:9px;
+  margin:23px 0 0;
+  padding:0;
+  list-style:none;
+  color:rgba(255,255,255,.85);
+  font-size:.7rem;
+}
+.etx-benefits li:before{
+  content:'✓';
+  margin-right:9px;
+  color:#ffb100;
+  font-weight:900;
+}
+.etx-open{
+  width:100%;
+  min-height:56px;
+  margin-top:27px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:0;
+  border-radius:12px;
+  background:#ffb100;
+  color:#0b1220;
+  font:900 .76rem/1 'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  cursor:pointer;
+  box-shadow:none;
+}
+.etx-open:hover{background:#f2a900}
+
+/* modal */
+.etx-modal{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .2s ease,visibility .2s ease;
+  font-family:'Inter',Arial,sans-serif;
+}
+.etx-modal.is-open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+.etx-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(2,12,45,.74);
+  backdrop-filter:blur(8px);
+}
+.etx-dialog{
+  position:relative;
+  z-index:2;
+  width:min(720px,100%);
+  max-height:calc(100vh - 40px);
+  overflow:auto;
+  border-radius:26px;
+  background:#fff;
+  color:#0b1220;
+  box-shadow:0 34px 100px rgba(0,0,0,.28);
+}
+.etx-head{
+  position:sticky;
+  top:0;
+  z-index:4;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:24px 28px 20px;
+  background:#fff;
+  border-bottom:1px solid #e8edf5;
+}
+.etx-head small{
+  display:block;
+  color:#032489;
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+.etx-head h2{
+  margin:7px 0 0;
+  color:#0b1220;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  font-size:clamp(1.85rem,3vw,2.3rem);
+  line-height:1;
+  letter-spacing:-.05em;
+}
+.etx-head p{
+  margin:8px 0 0;
+  color:#657087;
+  font-size:.7rem;
+}
+.etx-close{
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:0;
+  border-radius:50%;
+  background:#f0f3f9;
+  color:#0b1220;
+  font-size:1.3rem;
+  cursor:pointer;
+}
+.etx-close:hover{background:#e7ebf3}
+.etx-form,
+.etx-saved-view{
+  padding:22px 28px 28px;
+}
+.etx-form[hidden],
+.etx-saved-view[hidden]{
+  display:none!important;
+}
+.etx-fields{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.etx-field{
+  display:block;
+  color:#111827;
+  font-size:.71rem;
+  font-weight:800;
+}
+.etx-full{grid-column:1/-1}
+.etx-field input,
+.etx-field textarea{
+  box-sizing:border-box;
+  width:100%;
+  margin-top:7px;
+  padding:13px 14px;
+  border:1px solid #dbe2ee;
+  border-radius:12px;
+  background:#f9faff;
+  color:#111827;
+  font:600 .77rem/1.4 'Inter',Arial,sans-serif;
+  outline:none;
+  box-shadow:none;
+}
+.etx-field input{min-height:50px}
+.etx-field textarea{
+  min-height:100px;
+  resize:vertical;
+}
+.etx-field input:focus,
+.etx-field textarea:focus{
+  border-color:#032489;
+  box-shadow:0 0 0 3px rgba(3,36,137,.08);
+}
+.etx-delivery{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:14px;
+  align-items:center;
+  margin-top:18px;
+  padding:13px 14px;
+  border-radius:12px;
+  background:#f1f5ff;
+  color:#111827;
+  font-size:.7rem;
+}
+.etx-delivery span{color:#68758c}
+.etx-confirm{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:16px;
+  color:#667188;
+  font-size:.66rem;
+  line-height:1.5;
+}
+.etx-confirm input{margin-top:2px}
+.etx-submit{
+  width:100%;
+  min-height:56px;
+  margin-top:16px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:0;
+  border-radius:12px;
+  background:#032489;
+  color:#fff;
+  font:900 .77rem/1 'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  cursor:pointer;
+  box-shadow:none;
+}
+.etx-submit:hover{background:#0a32a7}
+.etx-secondary{
+  width:100%;
+  min-height:46px;
+  margin-top:8px;
+  border:1px solid #dbe2ee;
+  border-radius:12px;
+  background:#fff;
+  color:#032489;
+  font:800 .74rem/1 'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  cursor:pointer;
+}
+.etx-secondary:hover{background:#f8faff}
+.etx-note{
+  margin:10px 0 0;
+  color:#7b8598;
+  text-align:center;
+  font-size:.6rem;
+  line-height:1.5;
+}
+
+/* saved customer view */
+.etx-saved-card{
+  padding:20px;
+  border:1px solid #e3e9f6;
+  border-radius:18px;
+  background:#f4f7ff;
+}
+.etx-saved-card>small{
+  display:block;
+  margin-bottom:8px;
+  color:#032489;
+  font-size:.62rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.etx-saved-card h3{
+  margin:0 0 16px;
+  color:#0b1220;
+  font-family:'Plus Jakarta Sans','Inter',Arial,sans-serif;
+  font-size:1.35rem;
+  line-height:1.08;
+  letter-spacing:-.04em;
+}
+.etx-summary-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.etx-summary-item span{
+  display:block;
+  margin-bottom:3px;
+  color:#7b8598;
+  font-size:.56rem;
+  text-transform:uppercase;
+}
+.etx-summary-item strong{
+  display:block;
+  color:#111827;
+  font-size:.72rem;
+  line-height:1.35;
+  overflow-wrap:anywhere;
+}
+body.etx-modal-open{overflow:hidden!important}
+
+@media(max-width:900px){
+  .etx-wrap{
+    width:min(720px,calc(100% - 40px));
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .etx-card{min-height:0}
+}
+@media(max-width:620px){
+  #order.etx-order{padding:64px 0}
+  .etx-wrap{width:calc(100% - 28px)}
+  .etx-copy h2{font-size:clamp(2.85rem,14vw,4.2rem)}
+  .etx-step{
+    grid-template-columns:34px 1fr;
+    gap:7px 10px;
+  }
+  .etx-step small{grid-column:2}
+  .etx-card{
+    padding:28px 22px;
+    border-radius:22px;
+  }
+  .etx-modal{
+    align-items:flex-end;
+    padding:8px;
+  }
+  .etx-dialog{
+    max-height:calc(100vh - 16px);
+    border-radius:22px 22px 14px 14px;
+  }
+  .etx-head{padding:20px 18px 17px}
+  .etx-form,
+  .etx-saved-view{padding:18px}
+  .etx-fields{grid-template-columns:1fr}
+  .etx-field{grid-column:1/-1}
+  .etx-summary-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+
 </head>
 <body>
 <main>
@@ -344,60 +807,57 @@
     </section>
 
     
-    <section class="et-order-section" id="order">
-      <div class="et-order-grid">
-
-        <div class="et-order-copy reveal">
-          <p class="eyebrow">11 / ORDER IN MINUTES</p>
+    
+    <section class="etx-order" id="order">
+      <div class="etx-wrap">
+        <div class="etx-copy">
+          <p class="etx-kicker">11 / ORDER IN MINUTES</p>
 
           <h2>
             Order today.<br>
             <span>Pay when it arrives.</span>
           </h2>
 
-          <p class="et-order-lede">
+          <p class="etx-lede">
             Place your order in a minute. Emmy Technology confirms your details,
             prepares your Foldable Workspace Desk and dispatches it to you.
           </p>
 
-          <div class="et-order-process" aria-label="How ordering works">
-            <div>
-              <span>01</span>
+          <div class="etx-steps" aria-label="How ordering works">
+            <div class="etx-step">
+              <b>01</b>
               <strong>Place your order</strong>
               <small>Enter your delivery details.</small>
             </div>
-
-            <div>
-              <span>02</span>
+            <div class="etx-step">
+              <b>02</b>
               <strong>We confirm</strong>
               <small>We contact you to confirm your order.</small>
             </div>
-
-            <div>
-              <span>03</span>
+            <div class="etx-step">
+              <b>03</b>
               <strong>We dispatch</strong>
               <small>Your Foldable Workspace Desk is prepared and sent.</small>
             </div>
-
-            <div>
-              <span>04</span>
+            <div class="etx-step">
+              <b>04</b>
               <strong>You receive &amp; pay</strong>
               <small>Payment is made on delivery.</small>
             </div>
           </div>
         </div>
 
-        <aside class="et-order-launch reveal">
-          <span class="et-order-badge">PAY ON DELIVERY</span>
+        <aside class="etx-card">
+          <span class="etx-badge">PAY ON DELIVERY</span>
 
           <h3>Ready to get your workspace?</h3>
 
           <p>
-            Complete your delivery details once. We remember them on this device,
-            so if you return later you do not need to type everything again.
+            Enter your delivery details once. We remember them on this device,
+            so ordering again is faster.
           </p>
 
-          <div class="et-order-price-row">
+          <div class="etx-price">
             <div>
               <small>LAUNCH PRICE</small>
               <strong>&#8358;64,900</strong>
@@ -405,20 +865,20 @@
             <span>Typically 1–2 days</span>
           </div>
 
-          <ul>
+          <ul class="etx-benefits">
             <li>Free delivery within Ibadan</li>
             <li>7-day return window</li>
             <li>Payment on delivery</li>
           </ul>
 
-          <button type="button" class="et-order-open" data-order-trigger>
+          <button type="button" class="etx-open" data-etx-order-trigger>
             <span>Complete my order</span>
             <span>&rarr;</span>
           </button>
         </aside>
-
       </div>
     </section>
+
 
 
     <section class="faq section" id="faq">
@@ -434,42 +894,74 @@
   <footer class="footer"><div class="shell footer-top"><a class="brand brand--footer" href="#top"><img src="assets/brand-mark-yellow.png" alt=""><span><strong>EMMY</strong> TECHNOLOGY</span></a><div class="footer-contact"><a href="tel:+2348146503700">+234 814 650 3700</a><a href="https://wa.me/2348146503700" target="_blank" rel="noopener">WhatsApp</a><a href="https://instagram.com/emmy_technology" target="_blank" rel="noopener">@emmy_technology</a></div></div><div class="shell footer-bottom"><span>© <span id="year"></span> Emmy Technology</span><span>desk.emmytechnology.com</span></div></footer>
 
   <a class="whatsapp-float" href="https://wa.me/2348146503700?text=Hello%20Emmy%20Technology%2C%20I%20want%20to%20ask%20about%20the%20Foldable%20Workspace%20Desk." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WA</a>
-<script src="app.js" defer></script>
 
-<!-- === EMMYTECH STATIC ORDER MODAL START === -->
-<div class="et-modal" id="etOrderModal" aria-hidden="true">
-  <div class="et-modal-backdrop" data-order-close></div>
+<script src="app.js"></script>
+
+<!-- === EMMYTECH VERIFIED ORDER FLOW START === -->
+<div class="etx-modal" id="etxOrderModal" aria-hidden="true">
+  <div class="etx-backdrop" data-etx-close></div>
 
   <section
-    class="et-modal-card"
+    class="etx-dialog"
     role="dialog"
     aria-modal="true"
-    aria-labelledby="etOrderTitle"
+    aria-labelledby="etxOrderTitle"
   >
-    <header class="et-modal-head">
+    <header class="etx-head">
       <div>
-        <span>FOLDABLE WORKSPACE DESK</span>
-        <h2 id="etOrderTitle">Complete your order.</h2>
+        <small>FOLDABLE WORKSPACE DESK</small>
+        <h2 id="etxOrderTitle">Complete your order.</h2>
         <p>&#8358;64,900 &middot; Payment on delivery</p>
       </div>
 
       <button
         type="button"
-        class="et-modal-close"
-        data-order-close
+        class="etx-close"
+        data-etx-close
         aria-label="Close order form"
       >&times;</button>
     </header>
 
-    <div class="et-saved-notice" id="etSavedNotice" hidden>
-      <strong>Your details are saved.</strong>
-      <span>Review them below and continue.</span>
+    <div class="etx-saved-view" id="etxSavedView" hidden>
+      <div class="etx-saved-card">
+        <small>SAVED DETAILS</small>
+        <h3>Your delivery details are ready.</h3>
+
+        <div class="etx-summary-grid">
+          <div class="etx-summary-item">
+            <span>Name</span>
+            <strong id="etxSummaryName">—</strong>
+          </div>
+          <div class="etx-summary-item">
+            <span>Phone</span>
+            <strong id="etxSummaryPhone">—</strong>
+          </div>
+          <div class="etx-summary-item">
+            <span>Location</span>
+            <strong id="etxSummaryLocation">—</strong>
+          </div>
+          <div class="etx-summary-item">
+            <span>Address</span>
+            <strong id="etxSummaryAddress">—</strong>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="etx-submit" id="etxContinueSaved">
+        <span>Continue with saved details</span>
+        <span>&rarr;</span>
+      </button>
+
+      <button type="button" class="etx-secondary" id="etxEditDetails">
+        Edit delivery details
+      </button>
+
+      <p class="etx-note">Payment is made only when your order arrives.</p>
     </div>
 
-    <form class="et-order-form" id="orderForm">
-      <div class="et-field-grid">
-
-        <label class="et-field et-full">
+    <form class="etx-form" id="etxOrderForm">
+      <div class="etx-fields">
+        <label class="etx-field etx-full">
           Full name *
           <input
             type="text"
@@ -480,7 +972,7 @@
           >
         </label>
 
-        <label class="et-field">
+        <label class="etx-field">
           Phone number *
           <input
             type="tel"
@@ -491,7 +983,7 @@
           >
         </label>
 
-        <label class="et-field">
+        <label class="etx-field">
           WhatsApp number
           <input
             type="tel"
@@ -501,7 +993,7 @@
           >
         </label>
 
-        <label class="et-field">
+        <label class="etx-field">
           State *
           <input
             type="text"
@@ -511,18 +1003,17 @@
           >
         </label>
 
-        <label class="et-field">
+        <label class="etx-field">
           City / Area *
           <input
             type="text"
             name="city"
-            id="cityInput"
             required
             placeholder="e.g. Ibadan"
           >
         </label>
 
-        <label class="et-field et-full">
+        <label class="etx-field etx-full">
           Delivery address *
           <textarea
             name="address"
@@ -531,15 +1022,14 @@
             placeholder="House number, street, landmark..."
           ></textarea>
         </label>
-
       </div>
 
-      <div class="et-delivery" id="deliveryStatus">
+      <div class="etx-delivery">
         <span>Delivery</span>
-        <strong>Enter your city to see delivery information.</strong>
+        <strong id="etxDeliveryText">Enter your city to see delivery information.</strong>
       </div>
 
-      <label class="et-confirm">
+      <label class="etx-confirm">
         <input type="checkbox" name="confirm" required>
         <span>
           I confirm the details above are correct and understand that
@@ -547,18 +1037,282 @@
         </span>
       </label>
 
-      <button type="submit" class="et-submit">
+      <button type="submit" class="etx-submit">
         <span>Continue to WhatsApp</span>
         <span>&rarr;</span>
       </button>
 
-      <p class="et-form-note">
-        No online payment is requested here.
-      </p>
+      <p class="etx-note">No online payment is requested here.</p>
     </form>
   </section>
 </div>
-<!-- === EMMYTECH STATIC ORDER MODAL END === -->
+
+<script id="emmytech-order-runtime">
+(() => {
+  'use strict';
+
+  const WHATSAPP_NUMBER = '2348146503700';
+  const PRICE = '₦64,900';
+  const STORAGE_KEY = 'emmytechDeskCustomerDetails';
+  const ORDERS_KEY = 'emmytechDeskOrders';
+
+  const modal = document.getElementById('etxOrderModal');
+  const form = document.getElementById('etxOrderForm');
+  const savedView = document.getElementById('etxSavedView');
+  const continueSaved = document.getElementById('etxContinueSaved');
+  const editDetails = document.getElementById('etxEditDetails');
+  const deliveryText = document.getElementById('etxDeliveryText');
+
+  if (!modal || !form || !savedView) return;
+
+  const fieldValue = (name) => String(form.elements[name]?.value || '').trim();
+
+  const makeOrderRef = () => {
+    const d = new Date();
+    const date = [
+      d.getFullYear().toString().slice(-2),
+      String(d.getMonth() + 1).padStart(2, '0'),
+      String(d.getDate()).padStart(2, '0')
+    ].join('');
+    const random = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return `ETD-${date}-${random}`;
+  };
+
+  const normalize = (value = {}) => ({
+    name: String(value.name || '').trim(),
+    phone: String(value.phone || '').trim(),
+    whatsapp: String(value.whatsapp || '').trim(),
+    state: String(value.state || '').trim(),
+    city: String(value.city || '').trim(),
+    address: String(value.address || '').trim(),
+    submitted: Boolean(value.submitted),
+    updatedAt: value.updatedAt || ''
+  });
+
+  const hasRequired = (d) =>
+    Boolean(d?.name && d?.phone && d?.state && d?.city && d?.address);
+
+  const readSaved = () => {
+    try {
+      const direct = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      if (direct && typeof direct === 'object') {
+        const data = normalize(direct);
+        if (hasRequired(data)) return data;
+      }
+    } catch (_) {}
+
+    try {
+      const old = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+      if (Array.isArray(old) && old.length) {
+        const data = normalize({...old[old.length - 1], submitted:true});
+        if (hasRequired(data)) return data;
+      }
+    } catch (_) {}
+
+    return null;
+  };
+
+  const save = (submitted = false) => {
+    let previous = {};
+    try {
+      previous = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {};
+    } catch (_) {}
+
+    const data = normalize({
+      name: fieldValue('name'),
+      phone: fieldValue('phone'),
+      whatsapp: fieldValue('whatsapp'),
+      state: fieldValue('state'),
+      city: fieldValue('city'),
+      address: fieldValue('address'),
+      submitted: submitted ? true : Boolean(previous.submitted),
+      updatedAt: new Date().toISOString()
+    });
+
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (_) {}
+
+    return data;
+  };
+
+  const fillForm = (data) => {
+    if (!data) return;
+    ['name','phone','whatsapp','state','city','address'].forEach((name) => {
+      if (form.elements[name]) form.elements[name].value = data[name] || '';
+    });
+    updateDelivery();
+  };
+
+  const updateDelivery = () => {
+    const city = fieldValue('city').toLowerCase();
+    if (!city) {
+      deliveryText.textContent = 'Enter your city to see delivery information.';
+    } else if (city.includes('ibadan')) {
+      deliveryText.textContent = 'FREE delivery within Ibadan.';
+    } else {
+      deliveryText.textContent =
+        'Outside Ibadan: delivery fee applies and will be confirmed before dispatch.';
+    }
+  };
+
+  const renderSummary = (data) => {
+    document.getElementById('etxSummaryName').textContent = data.name || '—';
+    document.getElementById('etxSummaryPhone').textContent = data.phone || '—';
+    document.getElementById('etxSummaryLocation').textContent =
+      [data.city, data.state].filter(Boolean).join(', ') || '—';
+    document.getElementById('etxSummaryAddress').textContent = data.address || '—';
+  };
+
+  const showForm = (data = null) => {
+    if (data) fillForm(data);
+    savedView.hidden = true;
+    form.hidden = false;
+
+    setTimeout(() => {
+      const firstEmpty = ['name','phone','state','city','address']
+        .map((name) => form.elements[name])
+        .find((el) => el && !String(el.value || '').trim());
+      (firstEmpty || form.elements.name)?.focus();
+    }, 80);
+  };
+
+  const showSaved = (data) => {
+    renderSummary(data);
+    form.hidden = true;
+    savedView.hidden = false;
+  };
+
+  const openModal = () => {
+    const saved = readSaved();
+
+    if (saved?.submitted && hasRequired(saved)) {
+      fillForm(saved);
+      showSaved(saved);
+    } else {
+      showForm(saved);
+    }
+
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('etx-modal-open');
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('etx-modal-open');
+  };
+
+  const buildMessage = (data) => {
+    const ref = makeOrderRef();
+    const whatsapp = data.whatsapp || data.phone;
+    const delivery = data.city.toLowerCase().includes('ibadan')
+      ? 'FREE delivery within Ibadan'
+      : 'Delivery fee applies (to be confirmed before dispatch)';
+
+    const message = [
+      'Hello Emmy Technology, I want to order the Foldable Workspace Desk.',
+      '',
+      `Order Ref: ${ref}`,
+      `Name: ${data.name}`,
+      `Phone: ${data.phone}`,
+      `WhatsApp: ${whatsapp}`,
+      `State: ${data.state}`,
+      `City / Area: ${data.city}`,
+      `Delivery Address: ${data.address}`,
+      `Price: ${PRICE}`,
+      `Delivery: ${delivery}`,
+      'Payment: Pay on delivery',
+      'Return: 7-day return window',
+      '',
+      'Please confirm my order and delivery details.'
+    ].join('\n');
+
+    try {
+      const existing = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+      if (Array.isArray(existing)) {
+        existing.push({
+          ref,
+          ...data,
+          whatsapp,
+          price: PRICE,
+          delivery,
+          createdAt: new Date().toISOString()
+        });
+        localStorage.setItem(ORDERS_KEY, JSON.stringify(existing));
+      }
+    } catch (_) {}
+
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  };
+
+  const continueToWhatsApp = (data) => {
+    if (!hasRequired(data)) {
+      showForm(data);
+      return;
+    }
+    window.location.href = buildMessage(data);
+  };
+
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest(
+      'a[href="#order"], [data-order-trigger], [data-etx-order-trigger]'
+    );
+
+    if (trigger) {
+      event.preventDefault();
+      openModal();
+      return;
+    }
+
+    if (event.target.closest('[data-etx-close]')) {
+      event.preventDefault();
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+      closeModal();
+    }
+  });
+
+  form.addEventListener('input', () => {
+    updateDelivery();
+    save(false);
+  });
+
+  form.addEventListener('change', () => {
+    updateDelivery();
+    save(false);
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const data = save(true);
+    continueToWhatsApp(data);
+  });
+
+  continueSaved.addEventListener('click', () => {
+    const saved = readSaved();
+    if (saved) continueToWhatsApp(saved);
+  });
+
+  editDetails.addEventListener('click', () => {
+    showForm(readSaved());
+  });
+
+  updateDelivery();
+})();
+</script>
+<!-- === EMMYTECH VERIFIED ORDER FLOW END === -->
 
 </body>
 </html>
