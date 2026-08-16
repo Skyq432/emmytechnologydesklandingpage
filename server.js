@@ -6,7 +6,7 @@ const PORT = Number(process.env.PORT || 5173);
 const ROOT = __dirname;
 const mime = {
   '.html':'text/html; charset=utf-8', '.css':'text/css; charset=utf-8', '.js':'application/javascript; charset=utf-8',
-  '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.svg':'image/svg+xml', '.ico':'image/x-icon', '.json':'application/json; charset=utf-8'
+  '.png':'image/png', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.webp':'image/webp', '.mp4':'video/mp4', '.svg':'image/svg+xml', '.ico':'image/x-icon', '.json':'application/json; charset=utf-8'
 };
 
 const server = http.createServer((req, res) => {

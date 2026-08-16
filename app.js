@@ -32,18 +32,10 @@
           observer.unobserve(entry.target);
         }
       });
-    }, {threshold:0.1, rootMargin:'0px 0px -24px'});
+    }, { threshold: 0.1, rootMargin: '0px 0px -24px' });
 
     revealItems.forEach((item) => observer.observe(item));
   } else {
     revealItems.forEach((item) => item.classList.add('is-visible'));
   }
-
-  const colourChips = qa('.colour-chip');
-  colourChips.forEach((button) => {
-    button.addEventListener('click', () => {
-      colourChips.forEach((chip) => chip.classList.remove('active'));
-      button.classList.add('active');
-    });
-  });
 })();
