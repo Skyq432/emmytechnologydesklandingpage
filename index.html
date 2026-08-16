@@ -343,26 +343,43 @@
       <div class="shell trust-grid"><div class="trust-copy reveal"><p class="eyebrow">10 / WHO YOU'RE BUYING FROM</p><h2>A real business.<br><span>Not an anonymous page.</span></h2><p>Emmy Technology is an established Ibadan technology business serving students, professionals and customers across our product and support services.</p><p>Physical locations. Real contact numbers. A team you can speak to.</p><div class="trust-points"><span>Sango, Ibadan</span><span>University of Ibadan</span><span>+234 814 650 3700</span></div></div><div class="trust-visual reveal"><img src="assets/editorial-hero-open.png" alt="Foldable Workspace Desk at home" loading="lazy" /><div><strong>THE GADGET PLUG<br>YOU CAN TRUST.</strong><a href="https://wa.me/2348146503700" target="_blank" rel="noopener">Talk to Emmy Technology ↗</a></div></div></div>
     </section>
 
-    <section class="order section" id="order">
-      <div class="shell order-grid">
-        <div class="order-copy reveal"><p class="eyebrow">11 / ORDER IN MINUTES</p><h2>Order today.<br><span>Pay when it arrives.</span></h2><p>Enter your delivery details. We confirm your order, prepare your desk and dispatch it.</p><div class="order-process"><div><span>01</span><strong>Place your order</strong></div><div><span>02</span><strong>We confirm</strong></div><div><span>03</span><strong>We dispatch</strong></div><div><span>04</span><strong>You receive & pay</strong></div></div><p class="order-small">Delivery is typically 1–2 days depending on location. Ibadan delivery is FREE. Outside Ibadan, delivery charges are confirmed before dispatch.</p></div>
-        <form class="order-form reveal" id="orderForm">
-          <div class="form-heading"><span>YOUR ORDER</span><strong>₦64,900</strong></div>
-          <div class="field-grid">
-            <label class="field field--full">Full name *<input type="text" name="name" autocomplete="name" required placeholder="Your full name"></label>
-            <label class="field">Phone number *<input type="tel" name="phone" autocomplete="tel" required placeholder="080..."></label>
-            <label class="field">WhatsApp number<input type="tel" name="whatsapp" autocomplete="tel" placeholder="Optional if same as phone"></label>
-            <label class="field">State *<input type="text" name="state" required placeholder="e.g. Oyo"></label>
-            <label class="field">City / Area *<input type="text" name="city" id="cityInput" required placeholder="e.g. Ibadan"></label>
-            <label class="field field--full">Delivery address *<textarea name="address" required rows="3" placeholder="House number, street, landmark..."></textarea></label>
-          </div>
-          <div class="delivery-status" id="deliveryStatus"><span>Delivery</span><strong>Enter your city to see delivery information.</strong></div>
-          <label class="consent"><input type="checkbox" required><span>I confirm the details above are correct and understand that payment is made on delivery.</span></label>
-          <button class="btn btn--blue btn--form" type="submit">Place order · Pay on delivery</button>
-          <p class="form-note">No online payment is requested here. Your order is confirmed with Emmy Technology via WhatsApp.</p>
-        </form>
+    <section class="order section et-order-section" id="order">
+  <div class="shell et-order-grid">
+
+    <div class="et-order-copy reveal">
+      <p class="eyebrow">11 / ORDER IN MINUTES</p>
+      <h2>Order today.<br><span>Pay when it arrives.</span></h2>
+      <p class="et-order-lede">Place your order in a minute. Emmy Technology confirms your details, prepares your desk and dispatches it to you.</p>
+
+      <div class="et-order-process" aria-label="How ordering works">
+        <div><span>01</span><strong>Place your order</strong><small>Enter your delivery details.</small></div>
+        <div><span>02</span><strong>We confirm</strong><small>We contact you to confirm your order.</small></div>
+        <div><span>03</span><strong>We dispatch</strong><small>Your Foldable Workspace Desk is prepared and sent.</small></div>
+        <div><span>04</span><strong>You receive & pay</strong><small>Payment is made on delivery.</small></div>
       </div>
-    </section>
+    </div>
+
+    <aside class="et-order-launch reveal">
+      <span class="et-order-badge">PAY ON DELIVERY</span>
+      <h3>Ready to get your workspace?</h3>
+      <p>Complete your details once. We remember them on this device, so ordering again is faster.</p>
+
+      <div class="et-order-price-row">
+        <div><small>LAUNCH PRICE</small><strong>&#8358;64,900</strong></div>
+        <span>1–2 day delivery</span>
+      </div>
+
+      <ul>
+        <li>Free delivery within Ibadan</li>
+        <li>7-day return window</li>
+        <li>Payment on delivery</li>
+      </ul>
+
+      <button type="button" class="et-order-open" data-order-trigger>Complete my order <span>&rarr;</span></button>
+    </aside>
+
+  </div>
+</section>
 
     <section class="faq section" id="faq">
       <div class="shell faq-grid"><div class="faq-title reveal"><p class="eyebrow">12 / FAQ</p><h2>Before you<br><span>order.</span></h2><p>Everything important, without the small print maze.</p></div><div class="accordion reveal"><details open><summary>Will it fit in a small room?</summary><p>Yes. The desk measures approximately 80 cm × 40 cm × 75 cm when open, and folds vertically so it can take up much less room when not in use.</p></details><details><summary>Do I pay before delivery?</summary><p>No. This launch offer is payment on delivery.</p></details><details><summary>Where is delivery free?</summary><p>Delivery is free within Ibadan. Orders outside Ibadan are welcome, but a delivery fee applies based on location.</p></details><details><summary>How long does delivery take?</summary><p>Delivery is typically 1–2 days depending on your location.</p></details><details><summary>What colours are available?</summary><p>Black and White. You select your preferred colour when ordering.</p></details><details><summary>Can I return the desk?</summary><p>Yes. Emmy Technology provides a 7-day return period, subject to the applicable return conditions.</p></details><details><summary>Who gets the surprise gift?</summary><p>Every customer among the first 30 buyers receives a surprise gift with their order.</p></details></div></div>
@@ -381,6 +398,70 @@
   <div class="order-modal" id="orderModal" aria-hidden="true"><div class="modal-backdrop" data-close-modal></div><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" data-close-modal aria-label="Close">×</button><span class="modal-check">✓</span><p class="eyebrow">ORDER PREPARED</p><h2 id="modalTitle">Almost done.</h2><p>Your order reference is <strong id="orderRef">—</strong>. Continue to WhatsApp to send your details to Emmy Technology.</p><a id="whatsappOrderLink" class="btn btn--blue btn--form" href="#" target="_blank" rel="noopener">Continue to WhatsApp</a><button id="copyOrderButton" class="copy-button" type="button">Copy order details</button></div></div>
 
   <script src="app.js"></script>
+
+<!-- === EMMYTECH STATIC ORDER MODAL START === -->
+<div class="et-modal" id="etOrderModal" aria-hidden="true">
+  <div class="et-modal-backdrop" data-order-close></div>
+
+  <section class="et-modal-card" role="dialog" aria-modal="true" aria-labelledby="etOrderTitle">
+    <header class="et-modal-head">
+      <div>
+        <span>FOLDABLE WORKSPACE DESK</span>
+        <h2 id="etOrderTitle">Complete your order.</h2>
+        <p>&#8358;64,900 &middot; Pay on delivery</p>
+      </div>
+      <button type="button" class="et-modal-close" data-order-close aria-label="Close order form">&times;</button>
+    </header>
+
+    <div class="et-saved-notice" id="etSavedNotice" hidden>
+      <strong>Your details are saved.</strong>
+      <span>Review them below and continue.</span>
+    </div>
+
+    <form class="et-order-form" id="orderForm">
+      <div class="et-field-grid">
+        <label class="et-field et-full">Full name *
+          <input type="text" name="name" autocomplete="name" required placeholder="Your full name">
+        </label>
+
+        <label class="et-field">Phone number *
+          <input type="tel" name="phone" autocomplete="tel" required placeholder="080...">
+        </label>
+
+        <label class="et-field">WhatsApp number
+          <input type="tel" name="whatsapp" autocomplete="tel" placeholder="Optional if same as phone">
+        </label>
+
+        <label class="et-field">State *
+          <input type="text" name="state" required placeholder="e.g. Oyo">
+        </label>
+
+        <label class="et-field">City / Area *
+          <input type="text" name="city" id="cityInput" required placeholder="e.g. Ibadan">
+        </label>
+
+        <label class="et-field et-full">Delivery address *
+          <textarea name="address" rows="3" required placeholder="House number, street, landmark..."></textarea>
+        </label>
+      </div>
+
+      <div class="et-delivery" id="deliveryStatus">
+        <span>Delivery</span>
+        <strong>Enter your city to see delivery information.</strong>
+      </div>
+
+      <label class="et-confirm">
+        <input type="checkbox" name="confirm" required>
+        <span>I confirm the details above are correct and understand that payment is made on delivery.</span>
+      </label>
+
+      <button type="submit" class="et-submit">Continue to WhatsApp <span>&rarr;</span></button>
+      <p class="et-form-note">No online payment is requested here. Your order continues with Emmy Technology on WhatsApp.</p>
+    </form>
+  </section>
+</div>
+<!-- === EMMYTECH STATIC ORDER MODAL END === -->
+
 </body>
 </html>
 

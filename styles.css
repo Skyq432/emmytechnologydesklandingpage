@@ -2918,3 +2918,94 @@ body.quick-order-open{
 /* === EMMYTECH ORDER SAFE FIX END === */
 
 
+/* === EMMYTECH ORDER FLOW REBUILD START === */
+
+.et-order-section{
+  padding:clamp(76px,8vw,120px) 0!important;
+  background:#f7f9fd!important;
+  overflow:hidden;
+}
+.et-order-grid{
+  width:min(1160px,calc(100% - 64px));
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.1fr) minmax(360px,.72fr);
+  gap:clamp(48px,7vw,92px);
+  align-items:center;
+}
+.et-order-copy{position:static!important;top:auto!important;max-width:640px;}
+.et-order-copy .eyebrow{margin:0 0 20px;color:#032489;}
+.et-order-copy h2{margin:0;color:#0b1220;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(3.2rem,5.6vw,6rem);line-height:.9;letter-spacing:-.065em;}
+.et-order-copy h2 span{color:#032489;}
+.et-order-lede{max-width:540px;margin:26px 0 0;color:#657087;font-size:.94rem;line-height:1.75;}
+.et-order-process{margin-top:38px;border-top:1px solid #dde4f0;}
+.et-order-process>div{display:grid;grid-template-columns:45px minmax(130px,.75fr) 1.2fr;gap:14px;align-items:center;min-height:66px;border-bottom:1px solid #dde4f0;}
+.et-order-process span{color:#ffb100;font-size:.65rem;font-weight:900;}
+.et-order-process strong{color:#111827;font-size:.84rem;}
+.et-order-process small{color:#7b8598;font-size:.72rem;line-height:1.45;}
+
+.et-order-launch{position:relative;padding:40px;border-radius:28px;background:#032489;color:white;box-shadow:0 24px 60px rgba(3,36,137,.14);overflow:hidden;}
+.et-order-launch:after{content:'ORDER';position:absolute;left:-18px;bottom:-24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:7.5rem;font-weight:900;letter-spacing:-.08em;color:rgba(255,255,255,.045);pointer-events:none;}
+.et-order-badge{position:relative;z-index:2;display:inline-flex;padding:8px 11px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:#ffb100;font-size:.58rem;font-weight:900;letter-spacing:.12em;}
+.et-order-launch h3{position:relative;z-index:2;margin:23px 0 0;max-width:370px;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,3vw,3.2rem);line-height:.98;letter-spacing:-.055em;}
+.et-order-launch>p{position:relative;z-index:2;margin:17px 0 0;color:rgba(255,255,255,.72);font-size:.78rem;line-height:1.7;}
+.et-order-price-row{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-top:26px;padding-top:23px;border-top:1px solid rgba(255,255,255,.16);}
+.et-order-price-row small{display:block;color:rgba(255,255,255,.56);font-size:.55rem;font-weight:900;letter-spacing:.12em;}
+.et-order-price-row strong{display:block;margin-top:4px;color:#ffb100;font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;letter-spacing:-.05em;}
+.et-order-price-row>span{padding-bottom:4px;color:rgba(255,255,255,.7);font-size:.68rem;}
+.et-order-launch ul{position:relative;z-index:2;display:grid;gap:9px;margin:24px 0 0;padding:0;list-style:none;color:rgba(255,255,255,.82);font-size:.72rem;}
+.et-order-launch li:before{content:'✓';margin-right:9px;color:#ffb100;font-weight:900;}
+.et-order-open{position:relative;z-index:2;width:100%;min-height:54px;margin-top:27px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border:0;border-radius:12px;background:#ffb100;color:#0b1220;font:800 .76rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;box-shadow:none;}
+.et-order-open:hover{background:#f3aa00;}
+
+.et-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease;}
+.et-modal.is-open{opacity:1;visibility:visible;pointer-events:auto;}
+.et-modal-backdrop{position:absolute;inset:0;background:rgba(3,12,38,.72);backdrop-filter:blur(8px);}
+.et-modal-card{position:relative;z-index:2;width:min(720px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:26px;background:#fff;box-shadow:0 34px 100px rgba(0,0,0,.28);}
+.et-modal-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:20px;padding:27px 30px 23px;background:#fff;border-bottom:1px solid #e8edf5;}
+.et-modal-head>div>span{display:block;color:#032489;font-size:.56rem;font-weight:900;letter-spacing:.14em;}
+.et-modal-head h2{margin:8px 0 0;color:#0b1220;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.7rem,3vw,2.35rem);line-height:1;letter-spacing:-.055em;}
+.et-modal-head p{margin:9px 0 0;color:#657087;font-size:.72rem;}
+.et-modal-close{flex:0 0 42px;width:42px;height:42px;border:0;border-radius:50%;background:#f0f3f9;color:#0b1220;font-size:1.25rem;cursor:pointer;}
+.et-saved-notice{margin:20px 30px 0;padding:13px 15px;border-radius:12px;background:#eef3ff;color:#032489;font-size:.7rem;line-height:1.5;}
+.et-saved-notice strong{display:block;color:#0b1220;}
+.et-order-form{padding:24px 30px 30px;}
+.et-field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;}
+.et-field{display:block;color:#111827;font-size:.72rem;font-weight:800;}
+.et-full{grid-column:1/-1;}
+.et-field input,.et-field textarea{width:100%;margin-top:7px;padding:14px 15px;border:1px solid #dbe2ee;border-radius:12px;background:#f9faff;color:#111827;font:600 .78rem 'Plus Jakarta Sans',sans-serif;outline:none;box-sizing:border-box;}
+.et-field input{min-height:52px;}
+.et-field textarea{min-height:102px;resize:vertical;}
+.et-field input:focus,.et-field textarea:focus{border-color:#032489;box-shadow:0 0 0 3px rgba(3,36,137,.08);}
+.et-delivery{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-top:19px;padding:14px 15px;border-radius:12px;background:#f1f5ff;}
+.et-delivery span{color:#68758c;font-size:.67rem;}
+.et-delivery strong{color:#111827;font-size:.7rem;line-height:1.45;}
+.et-confirm{display:flex;align-items:flex-start;gap:10px;margin-top:18px;color:#667188;font-size:.68rem;line-height:1.5;}
+.et-confirm input{margin-top:2px;}
+.et-submit{width:100%;min-height:56px;margin-top:18px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border:0;border-radius:12px;background:#032489;color:#fff;font:900 .76rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;}
+.et-submit:hover{background:#0b32a7;}
+.et-form-note{margin:12px 0 0;text-align:center;color:#7b8598;font-size:.63rem;line-height:1.5;}
+body.et-modal-open{overflow:hidden;}
+
+@media(max-width:900px){
+  .et-order-grid{width:min(720px,calc(100% - 40px));grid-template-columns:1fr;gap:36px;}
+  .et-order-launch{padding:34px;}
+}
+@media(max-width:620px){
+  .et-order-section{padding:64px 0!important;}
+  .et-order-grid{width:calc(100% - 28px);}
+  .et-order-copy h2{font-size:clamp(2.8rem,14vw,4.3rem);}
+  .et-order-process>div{grid-template-columns:36px 1fr;gap:8px;padding:12px 0;}
+  .et-order-process small{grid-column:2;}
+  .et-order-launch{padding:28px 23px;border-radius:22px;}
+  .et-modal{align-items:flex-end;padding:8px;}
+  .et-modal-card{max-height:calc(100vh - 16px);border-radius:22px 22px 14px 14px;}
+  .et-modal-head{padding:21px 18px 18px;}
+  .et-saved-notice{margin:15px 18px 0;}
+  .et-order-form{padding:18px 18px 24px;}
+  .et-field-grid{grid-template-columns:1fr;}
+  .et-field{grid-column:1/-1;}
+}
+
+/* === EMMYTECH ORDER FLOW REBUILD END === */
+

@@ -1,6 +1,10 @@
 (() => {
+  'use strict';
+
   const WHATSAPP_NUMBER = '2348146503700';
   const PRICE = '₦64,900';
+  const STORAGE_KEY = 'emmytechDeskCustomerDetails';
+  const ORDERS_KEY = 'emmytechDeskOrders';
   const q = (selector, scope = document) => scope.querySelector(selector);
   const qa = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
@@ -33,81 +37,171 @@
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
+  // Keep the product colour cards interactive, but colour is no longer
+  // requested in the order form or WhatsApp order message.
   const colourChips = qa('.colour-chip');
-  const colourRadios = qa('input[name="colour"]');
-  const syncColour = colour => {
-    const normalized = String(colour || '').toLowerCase() === 'white' ? 'white' : 'black';
-    colourChips.forEach(chip => chip.classList.toggle('active', chip.dataset.colour === normalized));
-    const matching = q(`input[name="colour"][value="${normalized === 'white' ? 'White' : 'Black'}"]`);
-    if (matching) matching.checked = true;
-  };
-  colourChips.forEach(button => button.addEventListener('click', () => syncColour(button.dataset.colour)));
-  colourRadios.forEach(radio => radio.addEventListener('change', () => syncColour(radio.value)));
-  syncColour(q('input[name="colour"]:checked')?.value || 'Black');
+  colourChips.forEach(button => {
+    button.addEventListener('click', () => {
+      colourChips.forEach(chip => chip.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
 
+  const modal = q('#etOrderModal');
+  const form = q('#orderForm');
+  const savedNotice = q('#etSavedNotice');
   const cityInput = q('#cityInput');
   const deliveryStatus = q('#deliveryStatus strong');
-  const updateDelivery = () => {
-    if (!deliveryStatus) return;
-    const city = (cityInput?.value || '').trim().toLowerCase();
-    if (!city) deliveryStatus.textContent = 'Enter your city to see delivery information.';
-    else if (city.includes('ibadan')) deliveryStatus.textContent = 'FREE delivery within Ibadan.';
-    else deliveryStatus.textContent = 'Outside Ibadan: delivery fee applies and will be confirmed before dispatch.';
-  };
-  cityInput?.addEventListener('input', updateDelivery);
-  updateDelivery();
 
-  const form = q('#orderForm');
-  const modal = q('#orderModal');
-  const orderRefEl = q('#orderRef');
-  const whatsappLink = q('#whatsappOrderLink');
-  const copyButton = q('#copyOrderButton');
-  let latestMessage = '';
+  if (!modal || !form) {
+    console.warn('EmmyTech order modal is missing.');
+    return;
+  }
 
   const makeOrderRef = () => {
     const d = new Date();
-    const date = `${d.getFullYear().toString().slice(-2)}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
+    const date = `${d.getFullYear().toString().slice(-2)}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
     const random = Math.random().toString(36).slice(2, 6).toUpperCase();
     return `ETD-${date}-${random}`;
   };
 
+  const readSaved = () => {
+    try {
+      const direct = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      if (direct && typeof direct === 'object') return direct;
+    } catch (_) {}
+
+    // Bring forward the most recent details from the older order system.
+    try {
+      const old = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
+      if (Array.isArray(old) && old.length) {
+        const last = old[old.length - 1];
+        return {
+          name: last.name || '',
+          phone: last.phone || '',
+          whatsapp: last.whatsapp || '',
+          state: last.state || '',
+          city: last.city || '',
+          address: last.address || '',
+          submitted: true
+        };
+      }
+    } catch (_) {}
+    return null;
+  };
+
+  const updateDelivery = () => {
+    if (!deliveryStatus) return;
+    const city = String(cityInput?.value || '').trim().toLowerCase();
+    if (!city) {
+      deliveryStatus.textContent = 'Enter your city to see delivery information.';
+    } else if (city.includes('ibadan')) {
+      deliveryStatus.textContent = 'FREE delivery within Ibadan.';
+    } else {
+      deliveryStatus.textContent = 'Outside Ibadan: delivery fee applies and will be confirmed before dispatch.';
+    }
+  };
+
+  const fillSaved = () => {
+    const saved = readSaved();
+    if (!saved) {
+      if (savedNotice) savedNotice.hidden = true;
+      return;
+    }
+    ['name', 'phone', 'whatsapp', 'state', 'city', 'address'].forEach(name => {
+      const field = form.elements[name];
+      if (field && saved[name] !== undefined) field.value = saved[name] || '';
+    });
+    if (savedNotice) savedNotice.hidden = false;
+    updateDelivery();
+  };
+
+  const saveCurrent = (submitted = false) => {
+    const value = name => String(form.elements[name]?.value || '').trim();
+    let previous = {};
+    try { previous = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch (_) {}
+    const payload = {
+      name: value('name'),
+      phone: value('phone'),
+      whatsapp: value('whatsapp'),
+      state: value('state'),
+      city: value('city'),
+      address: value('address'),
+      submitted: submitted ? true : Boolean(previous.submitted),
+      updatedAt: new Date().toISOString()
+    };
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(payload)); } catch (_) {}
+    return payload;
+  };
+
   const openModal = () => {
-    if (!modal) return;
+    fillSaved();
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('et-modal-open');
+    setTimeout(() => {
+      const firstEmpty = ['name', 'phone', 'state', 'city', 'address']
+        .map(name => form.elements[name])
+        .find(el => el && !String(el.value || '').trim());
+      firstEmpty?.focus();
+    }, 120);
   };
+
   const closeModal = () => {
-    if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    document.body.classList.remove('et-modal-open');
   };
-  qa('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
-  document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
 
-  form?.addEventListener('submit', event => {
+  document.addEventListener('click', event => {
+    const trigger = event.target.closest('a[href="#order"], [data-order-trigger]');
+    if (trigger) {
+      event.preventDefault();
+      openModal();
+      return;
+    }
+    if (event.target.closest('[data-order-close]')) {
+      event.preventDefault();
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+
+  cityInput?.addEventListener('input', () => {
+    updateDelivery();
+    saveCurrent(false);
+  });
+  form.addEventListener('input', () => saveCurrent(false));
+  form.addEventListener('change', () => saveCurrent(false));
+  updateDelivery();
+
+  form.addEventListener('submit', event => {
     event.preventDefault();
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
-    const data = new FormData(form);
+    const details = saveCurrent(true);
     const ref = makeOrderRef();
-    const city = String(data.get('city') || '').trim();
-    const delivery = city.toLowerCase().includes('ibadan') ? 'FREE delivery within Ibadan' : 'Delivery fee applies (to be confirmed)';
+    const delivery = details.city.toLowerCase().includes('ibadan')
+      ? 'FREE delivery within Ibadan'
+      : 'Delivery fee applies (to be confirmed before dispatch)';
+    const whatsapp = details.whatsapp || details.phone;
 
-    latestMessage = [
+    const message = [
       'Hello Emmy Technology, I want to order the Foldable Workspace Desk.',
       '',
       `Order Ref: ${ref}`,
-      `Name: ${String(data.get('name') || '').trim()}`,
-      `Phone: ${String(data.get('phone') || '').trim()}`,
-      `WhatsApp: ${String(data.get('whatsapp') || data.get('phone') || '').trim()}`,
-      `State: ${String(data.get('state') || '').trim()}`,
-      `City / Area: ${city}`,
-      `Delivery Address: ${String(data.get('address') || '').trim()}`,
+      `Name: ${details.name}`,
+      `Phone: ${details.phone}`,
+      `WhatsApp: ${whatsapp}`,
+      `State: ${details.state}`,
+      `City / Area: ${details.city}`,
+      `Delivery Address: ${details.address}`,
       `Price: ${PRICE}`,
       `Delivery: ${delivery}`,
       'Payment: Pay on delivery',
@@ -117,717 +211,19 @@
     ].join('\n');
 
     try {
-      const existing = JSON.parse(localStorage.getItem('emmytechDeskOrders') || '[]');
+      const existing = JSON.parse(localStorage.getItem(ORDERS_KEY) || '[]');
       existing.push({
         ref,
-        name: String(data.get('name') || '').trim(),
-        phone: String(data.get('phone') || '').trim(),
-        whatsapp: String(data.get('whatsapp') || data.get('phone') || '').trim(),
-        state: String(data.get('state') || '').trim(),
-        city,
-        address: String(data.get('address') || '').trim(),
+        ...details,
+        whatsapp,
         price: PRICE,
         delivery,
         createdAt: new Date().toISOString()
       });
-      localStorage.setItem('emmytechDeskOrders', JSON.stringify(existing));
+      localStorage.setItem(ORDERS_KEY, JSON.stringify(existing));
     } catch (_) {}
 
-    if (orderRefEl) orderRefEl.textContent = ref;
-    if (whatsappLink) whatsappLink.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(latestMessage)}`;
-    openModal();
-  });
-
-  copyButton?.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(latestMessage);
-      const original = copyButton.textContent;
-      copyButton.textContent = 'Copied ✓';
-      setTimeout(() => { copyButton.textContent = original; }, 1600);
-    } catch (_) {
-      window.prompt('Copy your order details:', latestMessage);
-    }
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.location.href = url;
   });
 })();
-
-
-
-/* === EMMYTECH SMART ORDER JS START === */
-
-(() => {
-
-    const form =
-        document.querySelector('#orderForm');
-
-    if (!form) {
-        console.warn(
-            'EmmyTech smart order: #orderForm was not found.'
-        );
-        return;
-    }
-
-
-    const STORAGE_KEY =
-        'emmytechDeskCustomerDetails';
-
-
-    /* ======================================================
-       CREATE FORM PLACEHOLDER
-    ====================================================== */
-
-    const originalParent =
-        form.parentNode;
-
-    const placeholder =
-        document.createElement('div');
-
-    placeholder.className =
-        'order-form-popup-placeholder';
-
-    placeholder.innerHTML = `
-        <strong>Ready to order?</strong>
-
-        <p>
-            Your order form opens in a clean popup,
-            so you can complete your details without
-            losing your place on the page.
-        </p>
-
-        <button
-            type="button"
-            data-order-trigger
-        >
-            Open order form
-        </button>
-    `;
-
-    originalParent.insertBefore(
-        placeholder,
-        form
-    );
-
-
-    /* ======================================================
-       CREATE POPUP
-    ====================================================== */
-
-    const modal =
-        document.createElement('div');
-
-    modal.className =
-        'quick-order-modal';
-
-    modal.id =
-        'quickOrderModal';
-
-    modal.setAttribute(
-        'aria-hidden',
-        'true'
-    );
-
-    modal.innerHTML = `
-
-        <div
-            class="quick-order-backdrop"
-            data-quick-order-close
-        ></div>
-
-        <div
-            class="quick-order-panel"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="quickOrderTitle"
-        >
-
-            <div class="quick-order-header">
-
-                <div class="quick-order-heading">
-
-                    <span class="quick-order-eyebrow">
-                        FOLDABLE WORKSPACE DESK
-                    </span>
-
-                    <h2 id="quickOrderTitle">
-                        Complete your order.
-                    </h2>
-
-                    <p>
-                        Fill this once. Your details will be
-                        remembered on this device so you do
-                        not have to type them again.
-                    </p>
-
-                    <div class="quick-order-price">
-                        Launch price
-                        <strong>₦64,900</strong>
-                        · Pay on delivery
-                    </div>
-
-                </div>
-
-                <button
-                    type="button"
-                    class="quick-order-close"
-                    data-quick-order-close
-                    aria-label="Close order form"
-                >
-                    ×
-                </button>
-
-            </div>
-
-
-            <div
-                class="quick-order-saved"
-                id="quickOrderSaved"
-            >
-
-                <div class="quick-order-saved-icon">
-                    ✓
-                </div>
-
-                <div>
-                    <strong>Your details are saved.</strong>
-
-                    Review them below and continue.
-                    You do not need to type everything again.
-                </div>
-
-            </div>
-
-
-            <div
-                class="quick-order-mount"
-                id="quickOrderMount"
-            ></div>
-
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-
-    const mount =
-        modal.querySelector('#quickOrderMount');
-
-    const savedNotice =
-        modal.querySelector('#quickOrderSaved');
-
-
-    /* ======================================================
-       READ SAVED CUSTOMER
-    ====================================================== */
-
-    const readSavedDetails = () => {
-
-        try {
-
-            const direct =
-                JSON.parse(
-                    localStorage.getItem(STORAGE_KEY)
-                    || 'null'
-                );
-
-            if (
-                direct &&
-                typeof direct === 'object'
-            ) {
-                return direct;
-            }
-
-        }
-        catch (_) {}
-
-
-        /*
-         * Compatibility with customers who completed
-         * the old form before this update.
-         */
-
-        try {
-
-            const previousOrders =
-                JSON.parse(
-                    localStorage.getItem(
-                        'emmytechDeskOrders'
-                    ) || '[]'
-                );
-
-            if (
-                Array.isArray(previousOrders) &&
-                previousOrders.length
-            ) {
-
-                const last =
-                    previousOrders[
-                        previousOrders.length - 1
-                    ];
-
-                return {
-                    name:
-                        last.name || '',
-
-                    phone:
-                        last.phone || '',
-
-                    whatsapp:
-                        last.whatsapp || '',
-
-                    colour:
-                        last.colour || 'Black',
-
-                    state:
-                        last.state || '',
-
-                    city:
-                        last.city || '',
-
-                    address:
-                        last.address || '',
-
-                    submitted:true
-                };
-            }
-
-        }
-        catch (_) {}
-
-
-        return null;
-    };
-
-
-    /* ======================================================
-       APPLY SAVED CUSTOMER TO FORM
-    ====================================================== */
-
-    const applySavedDetails = () => {
-
-        const saved =
-            readSavedDetails();
-
-        if (!saved) {
-
-            savedNotice.classList.remove(
-                'is-visible'
-            );
-
-            const submitButton =
-                form.querySelector(
-                    'button[type="submit"]'
-                );
-
-            if (submitButton) {
-                submitButton.textContent =
-                    'Place order · Pay on delivery';
-            }
-
-            return;
-        }
-
-
-        const names = [
-            'name',
-            'phone',
-            'whatsapp',
-            'state',
-            'city',
-            'address'
-        ];
-
-
-        names.forEach(name => {
-
-            const field =
-                form.elements[name];
-
-            if (
-                field &&
-                saved[name] !== undefined
-            ) {
-                field.value =
-                    saved[name] || '';
-            }
-
-        });
-
-
-        if (saved.colour) {
-
-            const radio =
-                [...form.querySelectorAll(
-                    'input[name="colour"]'
-                )].find(
-                    item =>
-                        item.value.toLowerCase()
-                        ===
-                        String(
-                            saved.colour
-                        ).toLowerCase()
-                );
-
-            if (radio) {
-                radio.checked = true;
-                radio.dispatchEvent(
-                    new Event(
-                        'change',
-                        { bubbles:true }
-                    )
-                );
-            }
-
-        }
-
-
-        /*
-         * Refresh delivery information after
-         * restoring the city.
-         */
-
-        const city =
-            form.elements.city;
-
-        if (city) {
-
-            city.dispatchEvent(
-                new Event(
-                    'input',
-                    { bubbles:true }
-                )
-            );
-
-        }
-
-
-        if (saved.submitted) {
-
-            savedNotice.classList.add(
-                'is-visible'
-            );
-
-            const submitButton =
-                form.querySelector(
-                    'button[type="submit"]'
-                );
-
-            if (submitButton) {
-                submitButton.textContent =
-                    'Continue with saved details';
-            }
-
-        }
-        else {
-
-            savedNotice.classList.remove(
-                'is-visible'
-            );
-
-        }
-
-    };
-
-
-    /* ======================================================
-       SAVE FORM
-    ====================================================== */
-
-    const saveDetails = (
-        submitted = false
-    ) => {
-
-        const get =
-            name =>
-                form.elements[name]?.value?.trim()
-                || '';
-
-
-        const selectedColour =
-            form.querySelector(
-                'input[name="colour"]:checked'
-            )?.value || 'Black';
-
-
-        let existing = {};
-
-        try {
-
-            existing =
-                JSON.parse(
-                    localStorage.getItem(
-                        STORAGE_KEY
-                    ) || '{}'
-                );
-
-        }
-        catch (_) {}
-
-
-        const payload = {
-
-            name:get('name'),
-
-            phone:get('phone'),
-
-            whatsapp:get('whatsapp'),
-
-            colour:selectedColour,
-
-            state:get('state'),
-
-            city:get('city'),
-
-            address:get('address'),
-
-            submitted:
-                submitted
-                ? true
-                : Boolean(
-                    existing.submitted
-                ),
-
-            updatedAt:
-                new Date().toISOString()
-
-        };
-
-
-        try {
-
-            localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify(payload)
-            );
-
-        }
-        catch (_) {}
-
-    };
-
-
-    /* save as customer types */
-
-    form.addEventListener(
-        'input',
-        () => saveDetails(false)
-    );
-
-    form.addEventListener(
-        'change',
-        () => saveDetails(false)
-    );
-
-
-    /* ======================================================
-       OPEN ORDER FORM
-    ====================================================== */
-
-    const openQuickOrder = () => {
-
-        applySavedDetails();
-
-        mount.appendChild(form);
-
-        form.classList.add(
-            'is-visible'
-        );
-
-        modal.classList.add(
-            'is-open'
-        );
-
-        modal.setAttribute(
-            'aria-hidden',
-            'false'
-        );
-
-        document.body.classList.add(
-            'quick-order-open'
-        );
-
-
-        setTimeout(() => {
-
-            const firstEmpty =
-                [
-                    'name',
-                    'phone',
-                    'state',
-                    'city',
-                    'address'
-                ]
-                .map(
-                    name =>
-                        form.elements[name]
-                )
-                .find(
-                    element =>
-                        element &&
-                        !String(
-                            element.value || ''
-                        ).trim()
-                );
-
-            if (firstEmpty) {
-                firstEmpty.focus();
-            }
-
-        }, 180);
-
-    };
-
-
-    /* ======================================================
-       CLOSE ORDER FORM
-    ====================================================== */
-
-    const closeQuickOrder = () => {
-
-        modal.classList.remove(
-            'is-open'
-        );
-
-        modal.setAttribute(
-            'aria-hidden',
-            'true'
-        );
-
-        document.body.classList.remove(
-            'quick-order-open'
-        );
-
-
-        /*
-         * Put the same form back into its
-         * original section.
-         *
-         * We MOVE it instead of cloning it so the
-         * existing EmmyTech WhatsApp submission
-         * handler remains connected.
-         */
-
-        placeholder.after(form);
-
-    };
-
-
-    /* ======================================================
-       EVERY ORDER CTA OPENS THIS FORM
-    ====================================================== */
-
-    document.addEventListener(
-        'click',
-        event => {
-
-            const trigger =
-                event.target.closest(
-                    'a[href="#order"], [data-order-trigger]'
-                );
-
-            if (!trigger) return;
-
-            event.preventDefault();
-
-            openQuickOrder();
-
-        }
-    );
-
-
-    /* ======================================================
-       CLOSE CONTROLS
-    ====================================================== */
-
-    modal.addEventListener(
-        'click',
-        event => {
-
-            if (
-                event.target.closest(
-                    '[data-quick-order-close]'
-                )
-            ) {
-
-                event.preventDefault();
-
-                closeQuickOrder();
-
-            }
-
-        }
-    );
-
-
-    document.addEventListener(
-        'keydown',
-        event => {
-
-            if (
-                event.key === 'Escape' &&
-                modal.classList.contains(
-                    'is-open'
-                )
-            ) {
-
-                closeQuickOrder();
-
-            }
-
-        }
-    );
-
-
-    /* ======================================================
-       SUBMISSION
-    ====================================================== */
-
-    form.addEventListener(
-        'submit',
-        () => {
-
-            if (
-                !form.checkValidity()
-            ) {
-                return;
-            }
-
-
-            /*
-             * Store completed customer details.
-             */
-
-            saveDetails(true);
-
-
-            /*
-             * The original app.js handler now:
-             *
-             * 1. creates the order reference
-             * 2. creates the WhatsApp text
-             * 3. URL-encodes the message
-             * 4. displays Continue to WhatsApp
-             *
-             * Close this form popup immediately after
-             * that original handler has run.
-             */
-
-            setTimeout(
-                closeQuickOrder,
-                0
-            );
-
-        }
-    );
-
-
-    /* ======================================================
-       RESTORE PREVIOUS CUSTOMER ON PAGE LOAD
-    ====================================================== */
-
-    applySavedDetails();
-
-
-})();
-
-/* === EMMYTECH SMART ORDER JS END === */
-
-
