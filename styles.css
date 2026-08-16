@@ -1790,1222 +1790,526 @@ button{cursor:pointer}
 
 
 
-/* === EMMYTECH SMART ORDER POPUP START === */
-
-
-/* =========================================================
-   ORDER POPUP
-========================================================= */
-
-.quick-order-modal{
-    position:fixed;
-    inset:0;
-
-    z-index:9000;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    opacity:0;
-    visibility:hidden;
-    pointer-events:none;
-
-    transition:
-        opacity .22s ease,
-        visibility .22s ease;
-}
-
-
-.quick-order-modal.is-open{
-    opacity:1;
-    visibility:visible;
-    pointer-events:auto;
-}
-
-
-.quick-order-backdrop{
-    position:absolute;
-    inset:0;
-
-    background:
-        rgba(2,12,48,.70);
-
-    backdrop-filter:
-        blur(10px);
-}
-
-
-.quick-order-panel{
-    position:relative;
-    z-index:2;
-
-    width:min(760px,100%);
-
-    max-height:
-        calc(100vh - 40px);
-
-    overflow-y:auto;
-
-    border-radius:28px;
-
-    background:#ffffff;
-
-    box-shadow:
-        0 35px 100px
-        rgba(0,0,0,.28);
-
-    scrollbar-width:thin;
-}
-
-
-.quick-order-panel::-webkit-scrollbar{
-    width:7px;
-}
-
-
-.quick-order-panel::-webkit-scrollbar-thumb{
-    background:#d9dfeb;
-
-    border-radius:999px;
-}
-
-
-/* =========================================================
-   POPUP HEADER
-========================================================= */
-
-.quick-order-header{
-    position:sticky;
-    top:0;
-
-    z-index:5;
-
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-
-    gap:20px;
-
-    padding:
-        27px 30px 24px;
-
-    background:#fff;
-
-    border-bottom:
-        1px solid #e9edf5;
-}
-
-
-.quick-order-heading{
-    max-width:530px;
-}
-
-
-.quick-order-eyebrow{
-    display:block;
-
-    margin-bottom:8px;
-
-    color:#032489;
-
-    font-size:.58rem;
-
-    line-height:1;
-
-    font-weight:900;
-
-    letter-spacing:.14em;
-}
-
-
-.quick-order-heading h2{
-    margin:0;
-
-    font-family:
-        'Plus Jakarta Sans',
-        sans-serif;
-
-    color:#0c1220;
-
-    font-size:
-        clamp(1.7rem,3vw,2.4rem);
-
-    line-height:1;
-
-    letter-spacing:-.05em;
-}
-
-
-.quick-order-heading p{
-    margin:
-        10px 0 0;
-
-    max-width:480px;
-
-    color:#657087;
-
-    font-size:.77rem;
-
-    line-height:1.55;
-}
-
-
-.quick-order-price{
-    display:inline-flex;
-
-    margin-top:12px;
-
-    align-items:center;
-
-    gap:8px;
-
-    color:#032489;
-
-    font-size:.68rem;
-
-    font-weight:800;
-}
-
-
-.quick-order-price strong{
-    color:#ffb100;
-
-    font-family:
-        'Plus Jakarta Sans',
-        sans-serif;
-
-    font-size:1rem;
-}
-
-
-.quick-order-close{
-    flex:0 0 auto;
-
-    width:42px;
-    height:42px;
-
-    display:grid;
-    place-items:center;
-
-    border:0;
-
-    border-radius:50%;
-
-    background:#f1f4fa;
-
-    color:#0c1220;
-
-    font-size:1.25rem;
-
-    line-height:1;
-}
-
-
-.quick-order-close:hover{
-    background:#e8edf7;
-}
-
-
-/* =========================================================
-   SAVED CUSTOMER MESSAGE
-========================================================= */
-
-.quick-order-saved{
-    display:none;
-
-    margin:
-        22px 30px 0;
-
-    padding:
-        14px 16px;
-
-    border-radius:14px;
-
-    background:#eef3ff;
-
-    border:
-        1px solid #dce6ff;
-
-    color:#032489;
-
-    font-size:.72rem;
-
-    line-height:1.55;
-}
-
-
-.quick-order-saved.is-visible{
-    display:flex;
-
-    align-items:flex-start;
-
-    gap:10px;
-}
-
-
-.quick-order-saved-icon{
-    flex:0 0 auto;
-
-    width:28px;
-    height:28px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:9px;
-
-    background:#032489;
-
-    color:#fff;
-
-    font-size:.72rem;
-}
-
-
-.quick-order-saved strong{
-    display:block;
-
-    margin-bottom:2px;
-
-    color:#0c1220;
-}
-
-
-/* =========================================================
-   FORM INSIDE MODAL
-========================================================= */
-
-.quick-order-mount{
-    padding:
-        24px 30px 30px;
-}
-
-
-.quick-order-modal .order-form{
-    width:100% !important;
-
-    max-width:none !important;
-
-    margin:0 !important;
-
-    padding:0 !important;
-
-    border:0 !important;
-
-    border-radius:0 !important;
-
-    box-shadow:none !important;
-
-    background:#fff !important;
-
-    opacity:1 !important;
-
-    transform:none !important;
-}
-
-
-.quick-order-modal .form-heading{
-    display:none !important;
-}
-
-
-.quick-order-modal .btn--form{
-    min-height:54px;
-
-    border-radius:13px;
-
-    background:#032489;
-
-    color:#fff;
-
-    font-weight:900;
-}
-
-
-.quick-order-modal .btn--form:hover{
-    background:#0c35ad;
-}
-
-
-.quick-order-modal .field input,
-.quick-order-modal .field textarea{
-    background:#f8f9fc;
-}
-
-
-.quick-order-modal .delivery-status{
-    border-radius:14px;
-}
-
-
-.quick-order-modal .form-note{
-    text-align:center;
-}
-
-
-/* =========================================================
-   INLINE ORDER PLACEHOLDER WHILE FORM IS IN POPUP
-========================================================= */
-
-.order-form-popup-placeholder{
-    min-height:320px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-    justify-content:center;
-
-    gap:14px;
-
-    padding:40px;
-
-    text-align:center;
-
-    border-radius:24px;
-
-    background:#f4f7ff;
-
-    border:
-        1px solid #e2e9f8;
-}
-
-
-.order-form-popup-placeholder strong{
-    font-family:
-        'Plus Jakarta Sans',
-        sans-serif;
-
-    font-size:1.35rem;
-
-    color:#0c1220;
-}
-
-
-.order-form-popup-placeholder p{
-    max-width:380px;
-
-    color:#657087;
-
-    font-size:.78rem;
-
-    line-height:1.6;
-}
-
-
-.order-form-popup-placeholder button{
-    min-height:48px;
-
-    padding:0 22px;
-
-    border:0;
-
-    border-radius:12px;
-
-    background:#ffb100;
-
-    color:#0c1220;
-
-    font-size:.74rem;
-
-    font-weight:900;
-}
-
-
-/* stop body scrolling while popup is open */
-
-body.quick-order-open{
-    overflow:hidden !important;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:640px){
-
-    .quick-order-modal{
-        padding:8px;
-        align-items:flex-end;
-    }
-
-    .quick-order-panel{
-        width:100%;
-
-        max-height:
-            calc(100vh - 16px);
-
-        border-radius:
-            24px 24px 16px 16px;
-    }
-
-    .quick-order-header{
-        padding:
-            22px 19px 18px;
-    }
-
-    .quick-order-heading h2{
-        font-size:1.75rem;
-    }
-
-    .quick-order-heading p{
-        font-size:.71rem;
-    }
-
-    .quick-order-saved{
-        margin:
-            16px 18px 0;
-    }
-
-    .quick-order-mount{
-        padding:
-            19px 18px 24px;
-    }
-
-    .quick-order-modal .field-grid{
-        grid-template-columns:1fr;
-    }
-
-    .quick-order-modal .field{
-        grid-column:1 !important;
-    }
-
-}
-
-
-/* === EMMYTECH SMART ORDER POPUP END === */
-
-
-
-/* === EMMYTECH ORDER SAFE FIX START === */
-
-
-/* ==========================================================
-   NORMAL PAGE ORDER SECTION
-========================================================== */
-
-.order.section{
-    position:relative !important;
-
-    padding-top:
-        clamp(72px,8vw,120px) !important;
-
-    padding-bottom:
-        clamp(72px,8vw,120px) !important;
-
-    overflow:hidden;
-
-    background:#f7f9fd !important;
-}
-
-
-/*
-   Two clean columns:
-   left = sales copy
-   right = popup launcher
-*/
-
-.order .order-grid{
-    width:min(1180px,calc(100% - 64px)) !important;
-
-    margin-inline:auto !important;
-
-    display:grid !important;
-
-    grid-template-columns:
-        minmax(0,1.05fr)
-        minmax(360px,.72fr) !important;
-
-    gap:
-        clamp(48px,6vw,90px) !important;
-
-    align-items:center !important;
-}
-
-
-/* ----------------------------------------------------------
-   LEFT COPY
----------------------------------------------------------- */
-
-.order .order-copy{
-    position:relative !important;
-
-    top:auto !important;
-    left:auto !important;
-
-    width:100% !important;
-
-    max-width:640px !important;
-
-    margin:0 !important;
-
-    padding:0 !important;
-
-    z-index:1;
-}
-
-
-.order .order-copy .eyebrow{
-    margin-bottom:20px !important;
-
-    color:#032489 !important;
-}
-
-
-.order .order-copy h2{
-    margin:0 !important;
-
-    max-width:620px !important;
-
-    font-family:
-        'Plus Jakarta Sans',
-        sans-serif !important;
-
-    font-size:
-        clamp(3.5rem,5.8vw,6.4rem) !important;
-
-    line-height:.87 !important;
-
-    letter-spacing:-.07em !important;
-
-    color:#0b1220 !important;
-}
-
-
-.order .order-copy h2 span{
-    color:#032489 !important;
-}
-
-
-.order .order-copy > p:not(.eyebrow):not(.order-small){
-    max-width:530px !important;
-
-    margin:
-        26px 0 0 !important;
-
-    color:#657087 !important;
-
-    font-size:.95rem !important;
-
-    line-height:1.75 !important;
-}
-
-
-/* ----------------------------------------------------------
-   ORDER PROCESS
----------------------------------------------------------- */
-
-.order .order-process{
-    width:100% !important;
-
-    max-width:540px !important;
-
-    margin-top:38px !important;
-
-    border-top:
-        1px solid #dce3ef !important;
-}
-
-
-.order .order-process > div{
-    min-height:60px !important;
-
-    padding:
-        14px 0 !important;
-
-    display:grid !important;
-
-    grid-template-columns:
-        48px 1fr !important;
-
-    align-items:center !important;
-
-    border-bottom:
-        1px solid #dce3ef !important;
-}
-
-
-.order .order-process span{
-    color:#ffb100 !important;
-
-    font-size:.64rem !important;
-
-    font-weight:900 !important;
-}
-
-
-.order .order-process strong{
-    color:#111827 !important;
-
-    font-size:.88rem !important;
-
-    font-weight:800 !important;
-}
-
-
-.order .order-small{
-    max-width:520px !important;
-
-    margin:
-        22px 0 0 !important;
-
-    color:#7a859a !important;
-
-    font-size:.72rem !important;
-
-    line-height:1.65 !important;
-}
-
-
-/* ==========================================================
-   VERY IMPORTANT:
-   THE REAL FORM IS NOT DISPLAYED ON THE NORMAL PAGE
-========================================================== */
-
-.order #orderForm{
-    display:none !important;
-}
-
-
-/* But when JS moves the SAME form into our popup,
-   it becomes visible again.
-*/
-
-.quick-order-modal #orderForm{
-    display:block !important;
-}
-
-
-/* ==========================================================
-   RIGHT-SIDE ORDER LAUNCHER
-========================================================== */
-
-.order .order-form-popup-placeholder{
-    position:relative !important;
-
-    width:100% !important;
-
-    min-height:400px !important;
-
-    margin:0 !important;
-
-    padding:
-        46px 42px !important;
-
-    display:flex !important;
-
-    flex-direction:column !important;
-
-    align-items:flex-start !important;
-
-    justify-content:center !important;
-
-    text-align:left !important;
-
-    overflow:hidden !important;
-
-    border:0 !important;
-
-    border-radius:30px !important;
-
-    background:#032489 !important;
-
-    box-shadow:
-        0 25px 60px
-        rgba(3,36,137,.13) !important;
-}
-
-
-/* large quiet background word */
-
-.order .order-form-popup-placeholder::after{
-    content:"ORDER";
-
-    position:absolute;
-
-    left:-17px;
-    bottom:-31px;
-
-    font-family:
-        'Plus Jakarta Sans',
-        sans-serif;
-
-    font-size:8rem;
-
-    line-height:.8;
-
-    font-weight:900;
-
-    letter-spacing:-.08em;
-
-    color:
-        rgba(255,255,255,.045);
-
-    pointer-events:none;
-}
-
-
-.order .order-form-popup-placeholder::before{
-    content:"READY WHEN YOU ARE";
-
-    position:relative;
-
-    z-index:2;
-
-    display:block !important;
-
-    margin-bottom:22px !important;
-
-    color:#ffb100 !important;
-
-    font-size:.58rem !important;
-
-    line-height:1 !important;
-
-    font-weight:900 !important;
-
-    letter-spacing:.15em !important;
-}
-
-
-.order .order-form-popup-placeholder strong{
-    position:relative;
-
-    z-index:2;
-
-    display:block !important;
-
-    max-width:370px !important;
-
-    color:#fff !important;
-
-    font-family:
-        'Plus Jakarta Sans',
-        sans-serif !important;
-
-    font-size:
-        clamp(2.2rem,3.5vw,3.6rem) !important;
-
-    line-height:.96 !important;
-
-    letter-spacing:-.055em !important;
-
-    font-weight:800 !important;
-}
-
-
-.order .order-form-popup-placeholder p{
-    position:relative;
-
-    z-index:2;
-
-    max-width:360px !important;
-
-    margin:
-        20px 0 0 !important;
-
-    color:
-        rgba(255,255,255,.72) !important;
-
-    font-size:.8rem !important;
-
-    line-height:1.7 !important;
-}
-
-
-.order .order-form-popup-placeholder button{
-    position:relative;
-
-    z-index:2;
-
-    min-height:54px !important;
-
-    margin-top:28px !important;
-
-    padding:
-        0 25px !important;
-
-    border:0 !important;
-
-    border-radius:12px !important;
-
-    background:#ffb100 !important;
-
-    color:#0b1220 !important;
-
-    font-size:.76rem !important;
-
-    font-weight:900 !important;
-
-    box-shadow:none !important;
-
-    cursor:pointer !important;
-}
-
-
-.order .order-form-popup-placeholder button:hover{
-    background:#f4aa00 !important;
-}
-
-
-/* ==========================================================
-   POPUP ITSELF
-========================================================== */
-
-.quick-order-panel{
-    width:min(730px,100%) !important;
-}
-
-
-.quick-order-mount{
-    padding:
-        24px 30px 32px !important;
-}
-
-
-.quick-order-modal .order-form{
-    position:static !important;
-
-    width:100% !important;
-
-    max-width:none !important;
-
-    margin:0 !important;
-
-    padding:0 !important;
-
-    opacity:1 !important;
-
-    transform:none !important;
-
-    border:0 !important;
-
-    box-shadow:none !important;
-
-    background:#fff !important;
-}
-
-
-/* ensure old colour styling can never reappear */
-
-.quick-order-modal .colour-field,
-.quick-order-modal .colour-options{
-    display:none !important;
-}
-
-
-/* clean form spacing */
-
-.quick-order-modal .field-grid{
-    display:grid !important;
-
-    grid-template-columns:
-        repeat(2,minmax(0,1fr)) !important;
-
-    gap:18px !important;
-}
-
-
-.quick-order-modal .field--full{
-    grid-column:
-        1 / -1 !important;
-}
-
-
-.quick-order-modal .field{
-    color:#111827 !important;
-
-    font-size:.72rem !important;
-
-    font-weight:700 !important;
-}
-
-
-.quick-order-modal .field input,
-.quick-order-modal .field textarea{
-    width:100% !important;
-
-    margin-top:7px !important;
-
-    padding:
-        14px 15px !important;
-
-    border:
-        1px solid #dce3ef !important;
-
-    border-radius:12px !important;
-
-    background:#f9faff !important;
-
-    color:#111827 !important;
-
-    font:inherit;
-}
-
-
-.quick-order-modal .field input{
-    min-height:52px !important;
-}
-
-
-.quick-order-modal .field textarea{
-    min-height:105px !important;
-
-    resize:vertical;
-}
-
-
-/* delivery box */
-
-.quick-order-modal .delivery-status{
-    margin-top:20px !important;
-
-    padding:
-        15px 16px !important;
-
-    border:0 !important;
-
-    border-radius:13px !important;
-
-    background:#f1f5ff !important;
-}
-
-
-/* confirmation checkbox */
-
-.quick-order-modal .confirm-field{
-    margin-top:17px !important;
-}
-
-
-/* main submit */
-
-.quick-order-modal .btn--form{
-    width:100% !important;
-
-    min-height:56px !important;
-
-    margin-top:12px !important;
-
-    border:0 !important;
-
-    border-radius:13px !important;
-
-    background:#032489 !important;
-
-    color:#fff !important;
-
-    font-weight:900 !important;
-
-    box-shadow:none !important;
-}
-
-
-.quick-order-modal .btn--form:hover{
-    background:#0a32a7 !important;
-}
-
-
-/* ==========================================================
-   TABLET
-========================================================== */
-
-@media(max-width:900px){
-
-    .order .order-grid{
-        width:min(720px,calc(100% - 40px)) !important;
-
-        grid-template-columns:
-            1fr !important;
-
-        gap:38px !important;
-    }
-
-
-    .order .order-copy{
-        max-width:100% !important;
-    }
-
-
-    .order .order-copy h2{
-        font-size:
-            clamp(3.2rem,10vw,5.3rem) !important;
-    }
-
-
-    .order .order-form-popup-placeholder{
-        min-height:310px !important;
-
-        padding:
-            34px 30px !important;
-    }
-
-}
-
-
-/* ==========================================================
-   MOBILE
-========================================================== */
-
-@media(max-width:600px){
-
-    .order.section{
-        padding-top:65px !important;
-        padding-bottom:65px !important;
-    }
-
-
-    .order .order-grid{
-        width:
-            calc(100% - 28px) !important;
-
-        gap:30px !important;
-    }
-
-
-    .order .order-copy h2{
-        font-size:
-            clamp(2.8rem,14vw,4.3rem) !important;
-    }
-
-
-    .order .order-copy > p:not(.eyebrow):not(.order-small){
-        font-size:.86rem !important;
-    }
-
-
-    .order .order-form-popup-placeholder{
-        min-height:280px !important;
-
-        padding:
-            28px 23px !important;
-
-        border-radius:24px !important;
-    }
-
-
-    .order .order-form-popup-placeholder strong{
-        font-size:
-            clamp(2rem,10vw,3rem) !important;
-    }
-
-
-    .quick-order-mount{
-        padding:
-            18px 18px 25px !important;
-    }
-
-
-    .quick-order-modal .field-grid{
-        grid-template-columns:
-            1fr !important;
-    }
-
-
-    .quick-order-modal .field{
-        grid-column:
-            1 / -1 !important;
-    }
-
-}
-
-
-/* === EMMYTECH ORDER SAFE FIX END === */
-
-
-/* === EMMYTECH ORDER FLOW REBUILD START === */
+/* === EMMYTECH CLEAN ORDER SYSTEM START === */
 
 .et-order-section{
-  padding:clamp(76px,8vw,120px) 0!important;
-  background:#f7f9fd!important;
+  padding:clamp(78px,8vw,118px) 0;
+  background:#f7f9fd;
   overflow:hidden;
 }
+
 .et-order-grid{
   width:min(1160px,calc(100% - 64px));
   margin:0 auto;
   display:grid;
-  grid-template-columns:minmax(0,1.1fr) minmax(360px,.72fr);
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.72fr);
   gap:clamp(48px,7vw,92px);
   align-items:center;
 }
-.et-order-copy{position:static!important;top:auto!important;max-width:640px;}
-.et-order-copy .eyebrow{margin:0 0 20px;color:#032489;}
-.et-order-copy h2{margin:0;color:#0b1220;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(3.2rem,5.6vw,6rem);line-height:.9;letter-spacing:-.065em;}
-.et-order-copy h2 span{color:#032489;}
-.et-order-lede{max-width:540px;margin:26px 0 0;color:#657087;font-size:.94rem;line-height:1.75;}
-.et-order-process{margin-top:38px;border-top:1px solid #dde4f0;}
-.et-order-process>div{display:grid;grid-template-columns:45px minmax(130px,.75fr) 1.2fr;gap:14px;align-items:center;min-height:66px;border-bottom:1px solid #dde4f0;}
-.et-order-process span{color:#ffb100;font-size:.65rem;font-weight:900;}
-.et-order-process strong{color:#111827;font-size:.84rem;}
-.et-order-process small{color:#7b8598;font-size:.72rem;line-height:1.45;}
 
-.et-order-launch{position:relative;padding:40px;border-radius:28px;background:#032489;color:white;box-shadow:0 24px 60px rgba(3,36,137,.14);overflow:hidden;}
-.et-order-launch:after{content:'ORDER';position:absolute;left:-18px;bottom:-24px;font-family:'Plus Jakarta Sans',sans-serif;font-size:7.5rem;font-weight:900;letter-spacing:-.08em;color:rgba(255,255,255,.045);pointer-events:none;}
-.et-order-badge{position:relative;z-index:2;display:inline-flex;padding:8px 11px;border:1px solid rgba(255,255,255,.22);border-radius:999px;color:#ffb100;font-size:.58rem;font-weight:900;letter-spacing:.12em;}
-.et-order-launch h3{position:relative;z-index:2;margin:23px 0 0;max-width:370px;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(2rem,3vw,3.2rem);line-height:.98;letter-spacing:-.055em;}
-.et-order-launch>p{position:relative;z-index:2;margin:17px 0 0;color:rgba(255,255,255,.72);font-size:.78rem;line-height:1.7;}
-.et-order-price-row{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-top:26px;padding-top:23px;border-top:1px solid rgba(255,255,255,.16);}
-.et-order-price-row small{display:block;color:rgba(255,255,255,.56);font-size:.55rem;font-weight:900;letter-spacing:.12em;}
-.et-order-price-row strong{display:block;margin-top:4px;color:#ffb100;font-family:'Plus Jakarta Sans',sans-serif;font-size:2rem;letter-spacing:-.05em;}
-.et-order-price-row>span{padding-bottom:4px;color:rgba(255,255,255,.7);font-size:.68rem;}
-.et-order-launch ul{position:relative;z-index:2;display:grid;gap:9px;margin:24px 0 0;padding:0;list-style:none;color:rgba(255,255,255,.82);font-size:.72rem;}
-.et-order-launch li:before{content:'✓';margin-right:9px;color:#ffb100;font-weight:900;}
-.et-order-open{position:relative;z-index:2;width:100%;min-height:54px;margin-top:27px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border:0;border-radius:12px;background:#ffb100;color:#0b1220;font:800 .76rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;box-shadow:none;}
-.et-order-open:hover{background:#f3aa00;}
+.et-order-copy{
+  position:static;
+  max-width:640px;
+}
 
-.et-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease,visibility .2s ease;}
-.et-modal.is-open{opacity:1;visibility:visible;pointer-events:auto;}
-.et-modal-backdrop{position:absolute;inset:0;background:rgba(3,12,38,.72);backdrop-filter:blur(8px);}
-.et-modal-card{position:relative;z-index:2;width:min(720px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:26px;background:#fff;box-shadow:0 34px 100px rgba(0,0,0,.28);}
-.et-modal-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:20px;padding:27px 30px 23px;background:#fff;border-bottom:1px solid #e8edf5;}
-.et-modal-head>div>span{display:block;color:#032489;font-size:.56rem;font-weight:900;letter-spacing:.14em;}
-.et-modal-head h2{margin:8px 0 0;color:#0b1220;font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(1.7rem,3vw,2.35rem);line-height:1;letter-spacing:-.055em;}
-.et-modal-head p{margin:9px 0 0;color:#657087;font-size:.72rem;}
-.et-modal-close{flex:0 0 42px;width:42px;height:42px;border:0;border-radius:50%;background:#f0f3f9;color:#0b1220;font-size:1.25rem;cursor:pointer;}
-.et-saved-notice{margin:20px 30px 0;padding:13px 15px;border-radius:12px;background:#eef3ff;color:#032489;font-size:.7rem;line-height:1.5;}
-.et-saved-notice strong{display:block;color:#0b1220;}
-.et-order-form{padding:24px 30px 30px;}
-.et-field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;}
-.et-field{display:block;color:#111827;font-size:.72rem;font-weight:800;}
-.et-full{grid-column:1/-1;}
-.et-field input,.et-field textarea{width:100%;margin-top:7px;padding:14px 15px;border:1px solid #dbe2ee;border-radius:12px;background:#f9faff;color:#111827;font:600 .78rem 'Plus Jakarta Sans',sans-serif;outline:none;box-sizing:border-box;}
-.et-field input{min-height:52px;}
-.et-field textarea{min-height:102px;resize:vertical;}
-.et-field input:focus,.et-field textarea:focus{border-color:#032489;box-shadow:0 0 0 3px rgba(3,36,137,.08);}
-.et-delivery{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-top:19px;padding:14px 15px;border-radius:12px;background:#f1f5ff;}
-.et-delivery span{color:#68758c;font-size:.67rem;}
-.et-delivery strong{color:#111827;font-size:.7rem;line-height:1.45;}
-.et-confirm{display:flex;align-items:flex-start;gap:10px;margin-top:18px;color:#667188;font-size:.68rem;line-height:1.5;}
-.et-confirm input{margin-top:2px;}
-.et-submit{width:100%;min-height:56px;margin-top:18px;padding:0 20px;display:flex;align-items:center;justify-content:space-between;border:0;border-radius:12px;background:#032489;color:#fff;font:900 .76rem 'Plus Jakarta Sans',sans-serif;cursor:pointer;}
-.et-submit:hover{background:#0b32a7;}
-.et-form-note{margin:12px 0 0;text-align:center;color:#7b8598;font-size:.63rem;line-height:1.5;}
-body.et-modal-open{overflow:hidden;}
+.et-order-copy .eyebrow{
+  margin:0 0 20px;
+  color:#032489;
+}
+
+.et-order-copy h2{
+  margin:0;
+  max-width:620px;
+  color:#0b1220;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(3.2rem,5.5vw,5.9rem);
+  line-height:.9;
+  letter-spacing:-.065em;
+}
+
+.et-order-copy h2 span{
+  color:#032489;
+}
+
+.et-order-lede{
+  max-width:545px;
+  margin:27px 0 0;
+  color:#657087;
+  font-size:.94rem;
+  line-height:1.72;
+}
+
+.et-order-process{
+  margin-top:38px;
+  border-top:1px solid #dce4f0;
+}
+
+.et-order-process>div{
+  min-height:66px;
+  padding:13px 0;
+  display:grid;
+  grid-template-columns:44px minmax(125px,.75fr) 1.2fr;
+  gap:14px;
+  align-items:center;
+  border-bottom:1px solid #dce4f0;
+}
+
+.et-order-process span{
+  color:#ffb100;
+  font-size:.65rem;
+  font-weight:900;
+}
+
+.et-order-process strong{
+  color:#101827;
+  font-size:.83rem;
+  line-height:1.25;
+}
+
+.et-order-process small{
+  color:#788399;
+  font-size:.71rem;
+  line-height:1.45;
+}
+
+.et-order-launch{
+  position:relative;
+  min-height:410px;
+  padding:40px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:28px;
+  background:#032489;
+  color:#fff;
+  box-shadow:0 25px 60px rgba(3,36,137,.13);
+}
+
+.et-order-launch:after{
+  content:'ORDER';
+  position:absolute;
+  left:-17px;
+  bottom:-25px;
+  pointer-events:none;
+  color:rgba(255,255,255,.045);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:7.5rem;
+  line-height:.8;
+  font-weight:900;
+  letter-spacing:-.08em;
+}
+
+.et-order-badge{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  width:max-content;
+  padding:8px 11px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  color:#ffb100;
+  font-size:.58rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.et-order-launch h3{
+  position:relative;
+  z-index:2;
+  max-width:380px;
+  margin:23px 0 0;
+  color:#fff;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(2rem,3vw,3.15rem);
+  line-height:.98;
+  letter-spacing:-.055em;
+}
+
+.et-order-launch>p{
+  position:relative;
+  z-index:2;
+  max-width:390px;
+  margin:17px 0 0;
+  color:rgba(255,255,255,.73);
+  font-size:.78rem;
+  line-height:1.68;
+}
+
+.et-order-price-row{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:26px;
+  padding-top:23px;
+  border-top:1px solid rgba(255,255,255,.16);
+}
+
+.et-order-price-row small{
+  display:block;
+  color:rgba(255,255,255,.56);
+  font-size:.55rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.et-order-price-row strong{
+  display:block;
+  margin-top:5px;
+  color:#ffb100;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:2rem;
+  line-height:1;
+  letter-spacing:-.05em;
+}
+
+.et-order-price-row>span{
+  padding-bottom:4px;
+  color:rgba(255,255,255,.72);
+  font-size:.68rem;
+}
+
+.et-order-launch ul{
+  position:relative;
+  z-index:2;
+  display:grid;
+  gap:9px;
+  margin:24px 0 0;
+  padding:0;
+  list-style:none;
+  color:rgba(255,255,255,.84);
+  font-size:.72rem;
+}
+
+.et-order-launch li:before{
+  content:'✓';
+  margin-right:9px;
+  color:#ffb100;
+  font-weight:900;
+}
+
+.et-order-open{
+  position:relative;
+  z-index:2;
+  width:100%;
+  min-height:54px;
+  margin-top:27px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:0;
+  border-radius:12px;
+  background:#ffb100;
+  color:#0b1220;
+  font:900 .76rem 'Plus Jakarta Sans',sans-serif;
+  cursor:pointer;
+  box-shadow:none;
+}
+
+.et-order-open:hover{
+  background:#f2a900;
+}
+
+.et-modal{
+  position:fixed;
+  inset:0;
+  z-index:99999;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+
+.et-modal.is-open{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+.et-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(2,12,45,.72);
+  backdrop-filter:blur(8px);
+}
+
+.et-modal-card{
+  position:relative;
+  z-index:2;
+  width:min(720px,100%);
+  max-height:calc(100vh - 40px);
+  overflow:auto;
+  border-radius:26px;
+  background:#fff;
+  color:#0b1220;
+  box-shadow:0 34px 100px rgba(0,0,0,.28);
+}
+
+.et-modal-head{
+  position:sticky;
+  top:0;
+  z-index:3;
+  padding:26px 30px 22px;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:20px;
+  background:#fff;
+  border-bottom:1px solid #e8edf5;
+}
+
+.et-modal-head>div>span{
+  display:block;
+  color:#032489;
+  font-size:.56rem;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+
+.et-modal-head h2{
+  margin:8px 0 0;
+  color:#0b1220;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(1.75rem,3vw,2.35rem);
+  line-height:1;
+  letter-spacing:-.055em;
+}
+
+.et-modal-head p{
+  margin:9px 0 0;
+  color:#657087;
+  font-size:.72rem;
+}
+
+.et-modal-close{
+  flex:0 0 42px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:0;
+  border-radius:50%;
+  background:#f0f3f9;
+  color:#0b1220;
+  font-size:1.25rem;
+  cursor:pointer;
+}
+
+.et-saved-notice{
+  margin:20px 30px 0;
+  padding:13px 15px;
+  border-radius:12px;
+  background:#eef3ff;
+  color:#032489;
+  font-size:.7rem;
+  line-height:1.5;
+}
+
+.et-saved-notice strong{
+  display:block;
+  color:#0b1220;
+}
+
+.et-order-form{
+  margin:0;
+  padding:24px 30px 30px;
+}
+
+.et-field-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:17px;
+}
+
+.et-field{
+  display:block;
+  color:#111827;
+  font-size:.72rem;
+  font-weight:800;
+}
+
+.et-full{
+  grid-column:1/-1;
+}
+
+.et-field input,
+.et-field textarea{
+  box-sizing:border-box;
+  width:100%;
+  margin-top:7px;
+  padding:14px 15px;
+  border:1px solid #dbe2ee;
+  border-radius:12px;
+  outline:none;
+  background:#f9faff;
+  color:#111827;
+  font:600 .78rem 'Plus Jakarta Sans',sans-serif;
+  box-shadow:none;
+}
+
+.et-field input{
+  min-height:52px;
+}
+
+.et-field textarea{
+  min-height:102px;
+  resize:vertical;
+}
+
+.et-field input:focus,
+.et-field textarea:focus{
+  border-color:#032489;
+  box-shadow:0 0 0 3px rgba(3,36,137,.08);
+}
+
+.et-delivery{
+  margin-top:19px;
+  padding:14px 15px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:14px;
+  align-items:center;
+  border-radius:12px;
+  background:#f1f5ff;
+}
+
+.et-delivery span{
+  color:#68758c;
+  font-size:.67rem;
+}
+
+.et-delivery strong{
+  color:#111827;
+  font-size:.7rem;
+  line-height:1.45;
+}
+
+.et-confirm{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin-top:18px;
+  color:#667188;
+  font-size:.68rem;
+  line-height:1.5;
+}
+
+.et-confirm input{
+  margin-top:2px;
+}
+
+.et-submit{
+  width:100%;
+  min-height:56px;
+  margin-top:18px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:0;
+  border-radius:12px;
+  background:#032489;
+  color:#fff;
+  font:900 .76rem 'Plus Jakarta Sans',sans-serif;
+  cursor:pointer;
+  box-shadow:none;
+}
+
+.et-submit:hover{
+  background:#0b32a7;
+}
+
+.et-form-note{
+  margin:12px 0 0;
+  text-align:center;
+  color:#7b8598;
+  font-size:.63rem;
+  line-height:1.5;
+}
+
+body.et-modal-open{
+  overflow:hidden;
+}
 
 @media(max-width:900px){
-  .et-order-grid{width:min(720px,calc(100% - 40px));grid-template-columns:1fr;gap:36px;}
-  .et-order-launch{padding:34px;}
-}
-@media(max-width:620px){
-  .et-order-section{padding:64px 0!important;}
-  .et-order-grid{width:calc(100% - 28px);}
-  .et-order-copy h2{font-size:clamp(2.8rem,14vw,4.3rem);}
-  .et-order-process>div{grid-template-columns:36px 1fr;gap:8px;padding:12px 0;}
-  .et-order-process small{grid-column:2;}
-  .et-order-launch{padding:28px 23px;border-radius:22px;}
-  .et-modal{align-items:flex-end;padding:8px;}
-  .et-modal-card{max-height:calc(100vh - 16px);border-radius:22px 22px 14px 14px;}
-  .et-modal-head{padding:21px 18px 18px;}
-  .et-saved-notice{margin:15px 18px 0;}
-  .et-order-form{padding:18px 18px 24px;}
-  .et-field-grid{grid-template-columns:1fr;}
-  .et-field{grid-column:1/-1;}
+  .et-order-grid{
+    width:min(720px,calc(100% - 40px));
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+
+  .et-order-launch{
+    min-height:0;
+    padding:34px;
+  }
 }
 
-/* === EMMYTECH ORDER FLOW REBUILD END === */
+@media(max-width:620px){
+  .et-order-section{
+    padding:64px 0;
+  }
+
+  .et-order-grid{
+    width:calc(100% - 28px);
+  }
+
+  .et-order-copy h2{
+    font-size:clamp(2.8rem,14vw,4.3rem);
+  }
+
+  .et-order-process>div{
+    grid-template-columns:36px 1fr;
+    gap:8px 12px;
+    padding:12px 0;
+  }
+
+  .et-order-process small{
+    grid-column:2;
+  }
+
+  .et-order-launch{
+    padding:28px 23px;
+    border-radius:22px;
+  }
+
+  .et-modal{
+    align-items:flex-end;
+    padding:8px;
+  }
+
+  .et-modal-card{
+    max-height:calc(100vh - 16px);
+    border-radius:22px 22px 14px 14px;
+  }
+
+  .et-modal-head{
+    padding:21px 18px 18px;
+  }
+
+  .et-saved-notice{
+    margin:15px 18px 0;
+  }
+
+  .et-order-form{
+    padding:18px 18px 24px;
+  }
+
+  .et-field-grid{
+    grid-template-columns:1fr;
+  }
+
+  .et-field{
+    grid-column:1/-1;
+  }
+}
+
+/* === EMMYTECH CLEAN ORDER SYSTEM END === */
 
