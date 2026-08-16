@@ -1031,6 +1031,45 @@ body.etx-modal-open{overflow:hidden!important}
     }
 }
 </style>
+<style id="emmytech-final-hero-colours">
+
+.hero-pro-copy .hero-message-v2 > span.hero-line-white{
+    display:block !important;
+    color:#ffffff !important;
+}
+
+.hero-pro-copy .hero-message-v2 > strong.hero-line-yellow{
+    display:block !important;
+    color:#ffb100 !important;
+    -webkit-text-fill-color:#ffb100 !important;
+    font-family:inherit !important;
+    font-size:inherit !important;
+    font-weight:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
+}
+
+/* More controlled headline width */
+.hero-pro-copy .hero-message-v2{
+    max-width:720px !important;
+}
+
+/* Keep PERMANENT DESK together on wider screens */
+@media (min-width: 851px){
+    .hero-pro-copy .hero-message-v2 > strong.hero-line-yellow{
+        white-space:normal !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 850px){
+    .hero-pro-copy .hero-message-v2 > strong.hero-line-yellow{
+        color:#ffb100 !important;
+        -webkit-text-fill-color:#ffb100 !important;
+    }
+}
+
+</style>
 </head>
 <body>
 <main>
@@ -1085,9 +1124,9 @@ body.etx-modal-open{overflow:hidden!important}
         </div>
 
         <h1 class="hero-message-v2">
-  <span class="hero-white">YOUR ROOM DOESN&#8217;T</span>
-  <span class="hero-white">NEED ANOTHER</span>
-  <strong class="hero-yellow">PERMANENT DESK.</strong>
+    <span class="hero-line-white">YOUR ROOM DOESN&#8217;T</span>
+    <span class="hero-line-white">NEED ANOTHER</span>
+    <strong class="hero-line-yellow">PERMANENT DESK.</strong>
 </h1>
 
         <p class="hero-pro-lede">
@@ -1907,5 +1946,6 @@ body.etx-modal-open{overflow:hidden!important}
 
 </body>
 </html>
+
 
 
