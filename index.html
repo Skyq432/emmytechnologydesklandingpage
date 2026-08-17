@@ -1070,6 +1070,62 @@ body.etx-modal-open{overflow:hidden!important}
 }
 
 </style>
+
+<style id="emmytech-two-trump-cards">
+
+.hero-trust-strip{
+    padding-left:clamp(20px,4vw,64px) !important;
+    padding-right:clamp(20px,4vw,64px) !important;
+}
+
+.hero-trust-grid{
+    width:100% !important;
+    max-width:1460px !important;
+    margin:0 auto !important;
+
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:24px !important;
+}
+
+.hero-trust-card{
+    width:100% !important;
+    min-height:185px !important;
+
+    display:grid !important;
+    grid-template-columns:auto 1fr !important;
+    align-items:start !important;
+
+    gap:22px !important;
+    padding:32px 36px !important;
+}
+
+.hero-trust-card--gift{
+    background:#fff5da !important;
+    border-color:#ffb100 !important;
+}
+
+@media(max-width:760px){
+
+    .hero-trust-strip{
+        padding-left:16px !important;
+        padding-right:16px !important;
+    }
+
+    .hero-trust-grid{
+        grid-template-columns:1fr !important;
+        gap:14px !important;
+    }
+
+    .hero-trust-card{
+        min-height:145px !important;
+        padding:24px !important;
+    }
+
+}
+
+</style>
+
 </head>
 <body>
 <main>
@@ -1196,11 +1252,13 @@ body.etx-modal-open{overflow:hidden!important}
 </section>
 
 
+
 <!-- THREE TRUMP CARDS BELOW HERO -->
 <section class="hero-trust-strip">
 
   <div class="hero-trust-grid">
 
+    <!-- 01 / FREE DELIVERY -->
     <article class="hero-trust-card">
 
       <div
@@ -1236,38 +1294,7 @@ body.etx-modal-open{overflow:hidden!important}
     </article>
 
 
-    <article class="hero-trust-card">
-
-      <div
-        class="hero-trust-icon"
-        style="display:grid;place-items:center;color:#032489"
-        aria-hidden="true"
-      >
-        <svg
-          width="30"
-          height="30"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.8"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M4 9V4"/>
-          <path d="M4 9h5"/>
-          <path d="M5 8a8 8 0 1 1-1 8"/>
-        </svg>
-      </div>
-
-      <div>
-        <span class="hero-trust-number">02</span>
-        <h3>7-DAY RETURN</h3>
-        <p>Extra peace of mind after your desk arrives.</p>
-      </div>
-
-    </article>
-
-
+    <!-- 02 / SURPRISE GIFT -->
     <article class="hero-trust-card hero-trust-card--gift">
 
       <div
@@ -1294,7 +1321,7 @@ body.etx-modal-open{overflow:hidden!important}
       </div>
 
       <div>
-        <span class="hero-trust-number">03</span>
+        <span class="hero-trust-number">02</span>
         <h3>SURPRISE GIFT</h3>
         <p>For the first 30 buyers.</p>
       </div>
@@ -1306,8 +1333,7 @@ body.etx-modal-open{overflow:hidden!important}
 </section>
 
 
-    
-    <section class="organic-proof section" id="design">
+<section class="organic-proof section" id="design">
       <div class="shell organic-proof-grid">
         <div class="organic-proof-media reveal">
           <div class="organic-proof-main">
