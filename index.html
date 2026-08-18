@@ -1759,6 +1759,8 @@ body.etx-modal-open{overflow:hidden!important}
   </section>
 </div>
 
+<script src="desk-backend.js"></script>
+
 <script id="emmytech-order-runtime">
 (() => {
   'use strict';
@@ -1916,8 +1918,8 @@ body.etx-modal-open{overflow:hidden!important}
     document.body.classList.remove('etx-modal-open');
   };
 
-  const buildMessage = (data) => {
-    const ref = makeOrderRef();
+  const buildMessage = (data, syncedRef = null) => {
+    const ref = syncedRef || makeOrderRef();
     const whatsapp = data.whatsapp || data.phone;
     const delivery = data.city.toLowerCase().includes('ibadan')
       ? 'FREE delivery within Ibadan'
@@ -1959,12 +1961,55 @@ body.etx-modal-open{overflow:hidden!important}
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   };
 
-  const continueToWhatsApp = (data) => {
+  const continueToWhatsApp = async (data) => {
     if (!hasRequired(data)) {
       showForm(data);
       return;
     }
-    window.location.href = buildMessage(data);
+
+    let backendOrder = null;
+
+    try {
+
+      if (window.EmmyDeskBackend) {
+
+        backendOrder =
+          await window.EmmyDeskBackend.submitOrder(data);
+
+        if (backendOrder?.order_id) {
+
+          await window.EmmyDeskBackend.markWhatsAppClick(
+            backendOrder.order_id
+          );
+
+        }
+
+      }
+
+    } catch (error) {
+
+      /*
+        Backend tracking must never block
+        a genuine customer from reaching WhatsApp.
+      */
+
+      console.warn(
+        '[EmmyTech Desk] Backend order sync failed:',
+        error
+      );
+
+    }
+
+
+    const syncedRef =
+      backendOrder?.order_ref || null;
+
+
+    window.location.href =
+      buildMessage(
+        data,
+        syncedRef
+      );
   };
 
   document.addEventListener('click', (event) => {
@@ -2000,7 +2045,7 @@ body.etx-modal-open{overflow:hidden!important}
     save(false);
   });
 
-  form.addEventListener('submit', (event) => {
+  form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     if (!form.checkValidity()) {
@@ -2009,12 +2054,16 @@ body.etx-modal-open{overflow:hidden!important}
     }
 
     const data = save(true);
-    continueToWhatsApp(data);
+
+    await continueToWhatsApp(data);
   });
 
-  continueSaved.addEventListener('click', () => {
+  continueSaved.addEventListener('click', async () => {
     const saved = readSaved();
-    if (saved) continueToWhatsApp(saved);
+
+    if (saved) {
+      await continueToWhatsApp(saved);
+    }
   });
 
   editDetails.addEventListener('click', () => {
