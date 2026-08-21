@@ -2069,12 +2069,40 @@ src="https://www.facebook.com/tr?id=2214314096015976&ev=PageView&noscript=1"
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
+    /*
+      IMPORTANT:
+      Opening the order modal or clicking an Order button is NOT a lead.
+
+      A Meta Lead is recorded only after every required field is valid
+      and the customer has confirmed their delivery details.
+    */
     if (!form.checkValidity()) {
       form.reportValidity();
       return;
     }
 
+    /*
+      Check whether this browser has already successfully submitted
+      these customer details before. This prevents the saved-details
+      flow from repeatedly creating Meta Lead events.
+    */
+    const previouslySubmitted =
+      Boolean(readSaved()?.submitted);
+
     const data = save(true);
+
+    /*
+      Send the standard Meta Lead event only for a NEW,
+      fully completed form submission.
+    */
+    if (
+      !previouslySubmitted &&
+      typeof window.fbq === 'function'
+    ) {
+      window.fbq('track', 'Lead', {
+        content_name: 'Foldable Workspace Desk'
+      });
+    }
 
     await continueToWhatsApp(data);
   });
